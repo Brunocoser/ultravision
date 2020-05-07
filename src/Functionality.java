@@ -144,16 +144,14 @@ public class Functionality {
                     System.out.println("The customer was found.");
                     cust.ShowCustomersDetails();
 
-                    String name = null;
+                    System.out.println("Please enter a valid name");
+                    String name = scan.next();
 
                     do {
                         valid = false;
 
                         if (name.isEmpty() || !name.matches("[a-zA-Z]+")) {
                             System.out.println("The name must have only letters");
-
-                            System.out.println("Please enter a valid name");
-                            name = scan.nextLine();
                         } else {
                             valid = true;
                         }
@@ -165,7 +163,7 @@ public class Functionality {
                         valid = false;
 
                         System.out.println("Please enter the card number: ");
-                        CardNumber = scan.nextLine();
+                        CardNumber = scan.next();
 
                         if (!CardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
                             System.out.println("Please enter a valid number");
@@ -177,32 +175,17 @@ public class Functionality {
                     System.out.println("Enter a new date of birthday (dd/mm/yyyy");
                     String date = scan.next();
 
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-                    Date Birthday = null;
-
-                    valid = false;
-
                     do {
-                        try {
-                            valid = false;
-                            if (date.matches("(([1-2][0-9])|([1-9])|(3[0-1]))/((1[0-2])|([1-9]))/[0-9]{4}")) {
-                                if ((dateFormat.parse(date).getTime() - dateFormat.parse("00/00/0000").getTime()) > 0) {
-                                    Birthday = dateFormat.parse(date);
-                                    valid = true;
-                                }
+                        valid = false;
+                        if (date.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                             valid = true;
                             } else {
                                 System.out.println("Invalid date");
                                 valid = false;
-                                System.out.println("Please enter a valid date of birthday (dd/mm/yyyy");
+                                System.out.println("Please enter a valid date of birthday (dd/mm/yyyy)");
                                 date = scan.next();
                             }
-                        } catch (ParseException e) {
-                            System.out.println("Invalid date.");
-                            valid = false;
-                            System.out.println("Please enter a valid date of birthday (dd/mm/yyyy");
-                            date = scan.next();
-                        }
+
                     } while (!valid);
 
                     cust.setName(name);
@@ -257,6 +240,7 @@ public class Functionality {
             }
             UnloadCustomers(listCustomers);
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("It wasn't possible to update the customer details.");
         }
     }
