@@ -97,29 +97,16 @@ public class Functionality {
 
         String date = scan.next();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date Birthday = null;
-
         do {
-            try {
-                valid = false;
-                if (date.matches("(([1-2][0-9])|([1-9])|(3[0-1]))/((1[0-2])|([1-9]))/[0-9]{4}")) {
-                    if ((dateFormat.parse(date).getTime() - dateFormat.parse("00/00/0000").getTime()) > 0) {
-                        Birthday = dateFormat.parse(date);
-                        valid = true;
-                    }
+                if (date.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                    valid = true;
                 } else {
                     System.out.println("Please enter a valid date");
                     valid = false;
                     System.out.println("Please enter a valid date of Birthday (DD/MM/YYYY");
                     date = scan.next();
                 }
-            } catch (ParseException e) {
-                System.out.println("Invalid date");
-                valid = false;
-                System.out.println("Please enter a valid date of birthday (DD/MM/YYYY");
-                date = scan.next();
-            }
+
         } while (!valid);
 
         Customer c = new Customer(listCustomers.size() + 1, Name, CardNumber, date, Plans.NONE, 0);
