@@ -1,7 +1,6 @@
 import Enums.MediaFormats;
 import Enums.Plans;
 import Interfaces.ITitle;
-import com.sun.tools.javah.Gen;
 
 public class Title implements ITitle {
 
@@ -14,7 +13,7 @@ public class Title implements ITitle {
     private Plans Type;
     private boolean Rented;
 
-    public Title(int Code, String Title, int YearRelease, String Genre, String DirectorOrBand, MediaFormats format, Plans type, boolean rented){
+    public Title(int Code, String Title, int YearRelease, String Genre, String DirectorOrBand, MediaFormats format, Plans type, boolean rented) {
         this.Code = Code;
         this.Title = Title;
         this.YearRelease = YearRelease;
@@ -41,6 +40,7 @@ public class Title implements ITitle {
     public void setYearRelease(int yearRelease) {
         YearRelease = yearRelease;
     }
+
     public String getTitle() {
         return Title;
     }
@@ -72,16 +72,30 @@ public class Title implements ITitle {
     public void setFormatValue(MediaFormats formatValue) {
         FormatValue = formatValue;
     }
-    public Plans getType(){
+
+    public Plans getType() {
         return Type;
     }
-    public void setType(Plans type){
+
+    public void setType(Plans type) {
         Type = type;
     }
-    public boolean isRented(){
+
+    public boolean isRented() {
         return Rented;
     }
-    public void setRented(boolean rented){
+
+    public void setRented(boolean rented) {
         Rented = rented;
     }
+
+    public String printAll(){
+       return  "Title: " + getTitle()
+               +  " | Year Release: " + getYearRelease()
+                + " | Genre: " + getGenre()
+                + " | Director: " + getDirectorOrBand()
+                + " | Format: " + getFormatValue()
+                + " | Type: " + getType();
+    }
+
 }

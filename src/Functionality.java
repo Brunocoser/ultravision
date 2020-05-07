@@ -770,14 +770,12 @@ public class Functionality {
         } else {
             if (TitleName == null) {
                 for (Title title : listTitles){
-                    System.out.println("Title: " + title.getTitle()  + " | Year Release: " + title.getYearRelease()
-                    + " | Genre: " + title.getGenre()); //" / Code: " + title.getCode()
+                    System.out.println(title.printAll());
                 }
             } else {
                 for (Title title : listTitles) {
                     if (title.getTitle().toLowerCase().equals(TitleName.toLowerCase())){
-                        System.out.println("Title: " + title.getTitle() +  " | Year Release: " + title.getYearRelease()
-                                + " | Genre: " + title.getGenre()); //" / Code: " + title.getCode() +
+                        System.out.println(title.printAll());
                         found = true;
                     }
                 }
