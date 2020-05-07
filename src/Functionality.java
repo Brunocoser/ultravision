@@ -323,7 +323,6 @@ public class Functionality {
 
             System.out.println("Enter a name for the new title: ");
 
-            scan.nextLine();
             title = scan.nextLine();
 
             do {
@@ -356,14 +355,16 @@ public class Functionality {
 
             String sYear = null;
             int year = 0;
+            System.out.println("Please enter the year of release of this title");
+
             do {
                 validFormat = false;
 
-                System.out.println("Please enter the year of release of this title");
                 sYear = scan.nextLine();
 
                 if (sYear.length() != 4 || sYear.matches("[a-zA-Z]+")) {
                     System.out.println("Please enter a valid number");
+                    System.out.println("Please enter the year of release of this title");
                 } else {
                     if (Integer.parseInt(sYear) > 0) {
                         year = Integer.parseInt(sYear);
@@ -396,7 +397,7 @@ public class Functionality {
                 DirectorOrBand = scan.nextLine();
 
                 if (DirectorOrBand.isEmpty() || !DirectorOrBand.matches("[a-zA-Z]+")) {
-                    System.out.println("The genre must have only letters");
+                    System.out.println("The director or band must have only letters");
                 } else {
                     validFormat = true;
                 }
@@ -405,29 +406,28 @@ public class Functionality {
             Title t = new Title(listTitles.size() + 1, title, year, genre, DirectorOrBand, null, null, false);
 
             do {
+                validFormat = false;
                 System.out.println("Please enter a format for the new title (CD, DVD or BluRay:");
-                String format = scan.next();
+                String format = scan.nextLine();
 
-                switch (format.toLowerCase()) {
-                    case "cd":
-                        t.setFormatValue(MediaFormats.CD);
-                        validFormat = true;
-                        break;
-                    case "dvd":
-                        t.setFormatValue(MediaFormats.DVD);
-                        validFormat = true;
-                        break;
-                    case "bluray":
-                        t.setFormatValue(MediaFormats.BluRay);
-                        validFormat = true;
-                        break;
-                    default:
-                        System.out.println("Please enter a valid format");
-                        break;
+                    switch (format.toLowerCase()) {
+                        case "cd":
+                            t.setFormatValue(MediaFormats.CD);
+                            validFormat = true;
+                            break;
+                        case "dvd":
+                            t.setFormatValue(MediaFormats.DVD);
+                            validFormat = true;
+                            break;
+                        case "bluray":
+                            t.setFormatValue(MediaFormats.BluRay);
+                            validFormat = true;
+                            break;
+                        default:
+                            System.out.println("Please enter a valid format");
+                            break;
                 }
             } while (!validFormat);
-
-            validFormat = false;
 
             do {
                 System.out.println("Please enter a type for the title");
