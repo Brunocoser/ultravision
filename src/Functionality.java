@@ -20,23 +20,34 @@ public class Functionality {
         do {
             boolean found = false;
 
-            System.out.println("---------- Search for Customers  ----------\\n* To return to the menu, type 'exit' *\\n");
-            System.out.println("Please, enter a Customer Name: ");
+            System.out.println("---------- Search for Customers  ----------\n* To return to the menu, type 'exit' *\n");
+            System.out.println("Please, enter a Customer Name (or type 'all' to show all): ");
 
             String CustomerName = scan.nextLine();
 
-            if (CustomerName.toLowerCase().contentEquals("exit")) {
+            if(CustomerName.isEmpty()){
+                System.out.println("Please enter a valid name:");
+            }
+            else if (CustomerName.toLowerCase().contentEquals("exit")) {
                 returnMenu = true;
-            } else {
+            } else if (CustomerName.toLowerCase().contentEquals("all")){
+                System.out.println();
                 for (Customer customer : listCustomers) {
-
+                    customer.ShowCustomersDetails();
+                    found = true;
+                }
+                System.out.println();
+            } else{
+                System.out.println();
+                for (Customer customer : listCustomers) {
                     if (customer.getName().toLowerCase().contains(CustomerName.toLowerCase())) {
                         customer.ShowCustomersDetails();
                         found = true;
                     }
                 }
+                System.out.println();
             }
-            if (!found && !returnMenu) {
+            if (!found && !returnMenu && !CustomerName.isEmpty()) {
                 System.out.println(CustomerName + " not found.");
             }
         } while (!returnMenu);
