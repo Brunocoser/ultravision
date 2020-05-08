@@ -70,8 +70,8 @@ public class Functionality {
             do {
                 valid = false;
 
-                if (Name.isEmpty() || !Name.matches("[a-zA-Z]+")) {
-                    System.out.println("Name must ave only letters");
+                if (Name.isEmpty() || !Name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) { //"^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}"
+                    System.out.println("Name must ave only letters"); //"[a-zA-Z]+"
                     System.out.println("Please enter a valid name:");
                     Name = scan.nextLine();
                 } else {
@@ -150,7 +150,7 @@ public class Functionality {
                     do {
                         valid = false;
 
-                        if (name.isEmpty() || !name.matches("[a-zA-Z]+")) {
+                        if (name.isEmpty() || !name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) {
                             System.out.println("The name must have only letters");
                         } else {
                             valid = true;
@@ -172,7 +172,7 @@ public class Functionality {
                         }
                     } while (!valid);
 
-                    System.out.println("Enter a new date of birthday (dd/mm/yyyy");
+                    System.out.println("Enter a new date of birthday (dd/mm/yyyy)");
                     String date = scan.next();
 
                     do {
@@ -323,8 +323,8 @@ public class Functionality {
                     break;
                 } else {
                     if (title.isEmpty() || !title.matches("[0-9a-zA-Z]+")){
-                        System.out.println("The name must only contains letters");
-                        System.out.println("Please enter a valid name");
+                        System.out.println("The name must only contains letters and numbers.");
+                        System.out.println("Please enter a valid name:");
                         title = scan.nextLine();
                     } else {
                         if (ShowDetails(null, listTitles, title)){
