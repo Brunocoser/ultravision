@@ -275,14 +275,22 @@ public class Functionality {
 
             ShowDetails(null, listTitles, "");
             System.out.println("");
-            System.out.println("---------- Search for Titles ----------\n---------------------------------------\n");
-            System.out.println("    Please, enter a title name: \n* To return to the menu, type 'exit' *\n");
+            System.out.println("---------- Search for Titles ----------\n* To return to the menu, type 'exit' *\n");
+            System.out.println("Please, enter a Title Name (or type 'all' to show all titles)");
 
             String TitleName = scan.nextLine();
 
             if (TitleName.toLowerCase().contentEquals("exit")) {
                 returnMenu = true;
-            } else {
+            }
+            else if(TitleName.toLowerCase().contentEquals("all")){
+                System.out.println();
+                for (Title title : listTitles){
+                    title.ShowTitleDetails();
+                    found = true;
+                }
+
+            }else{
                 found = ShowDetails(null, listTitles, TitleName.toLowerCase());
             }
 
@@ -314,7 +322,7 @@ public class Functionality {
                     returnMenu = true;
                     break;
                 } else {
-                    if (title.isEmpty() || !title.matches("[a-zA-Z]+")) {
+                    if (title.isEmpty() || !title.matches("[0-9a-zA-Z]+")){
                         System.out.println("The name must only contains letters");
                         System.out.println("Please enter a valid name");
                         title = scan.nextLine();

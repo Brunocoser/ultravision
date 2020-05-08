@@ -89,13 +89,18 @@ public class Title implements ITitle {
         Rented = rented;
     }
 
-    public String printAll(){
-       return  "Title: " + getTitle()
-               +  " | Year Release: " + getYearRelease()
+    public String printAll() {
+        return "Title: " + getTitle()
+                + " | Year Release: " + getYearRelease()
                 + " | Genre: " + getGenre()
                 + " | Director: " + getDirectorOrBand()
                 + " | Format: " + getFormatValue()
                 + " | Type: " + getType();
     }
 
+    public void ShowTitleDetails() {
+        System.out.println("Title: " + this.Title + " | Year Release: " + this.YearRelease + " | Genre: " + this.Genre +
+                "| Director: " + this.DirectorOrBand + " | Format: " + this.FormatValue + " | Type: " + this.Type);
+
+    }
 }
