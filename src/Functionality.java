@@ -70,7 +70,7 @@ public class Functionality {
             do {
                 valid = false;
 
-                if (Name.isEmpty() || !Name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) { //"^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}"
+                if (Name.isEmpty() || !Name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) {
                     System.out.println("Name must ave only letters"); //"[a-zA-Z]+"
                     System.out.println("Please enter a valid name:");
                     Name = scan.nextLine();
@@ -157,7 +157,7 @@ public class Functionality {
                         }
                     } while (!valid);
 
-                    String CardNumber = null;
+                    String CardNumber;
 
                     do {
                         valid = false;
@@ -321,8 +321,8 @@ public class Functionality {
                 if (title.toLowerCase().contentEquals("exit")) {
                     returnMenu = true;
                     break;
-                } else {
-                    if (title.isEmpty() || !title.matches("[0-9a-zA-Z]+")){
+                } else {                // Needs to accept numbers, special characters and space between names
+                    if (title.isEmpty() || !title.matches("[0-9a-zA-Z]+") || !title.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")){
                         System.out.println("The name must only contains letters and numbers.");
                         System.out.println("Please enter a valid name:");
                         title = scan.nextLine();
@@ -461,7 +461,7 @@ public class Functionality {
                 e.printStackTrace();
             }
 
-            System.out.println(t.getTitle() + "was added to the inventory");
+            System.out.println(t.getTitle() + " was added to the inventory");
 
             do {
                 validFormat = false;
