@@ -32,3 +32,13 @@
 32|bruno007|1900|Horror|John|BluRay|ML|false|
 33|James Bond|2000|Action|James|DVD|TV|false|
 34|RD|2000|horror|tld|CD|ML|false|
+35|James|2000|Action|James|CD|ML|false|
+36|JamesBond|2000|Action|James|CD|ML|false|
+37|James James Bond|2000|Action|James|CD|TV|false|
+38|James Bonded|2000|Action|James|CD|VL|false|
+39|Wold Of All Street|2000|Actionm|la|CD|TV|false|
+40|james bondddddd|2000|aaaa|aaaa|CD|TV|false|
+41|Wolf OF ALll|2000|action|lol|DVD|ML|false|
+42|Bruno Bond 007|2000|Action|Bruno|DVD|VL|false|
+43|James Bruno|5555|lol|aaaa|DVD|TV|false|
+44|James James|4000|Action|Direcotr|DVD|TV|false|

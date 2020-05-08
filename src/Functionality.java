@@ -70,9 +70,9 @@ public class Functionality {
             do {
                 valid = false;
 
-                if (Name.isEmpty() || !Name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) {
-                    System.out.println("Name must ave only letters"); //"[a-zA-Z]+"
-                    System.out.println("Please enter a valid name:");
+                if (Name.isEmpty() || !Name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) { // "^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}"
+                    System.out.println("Name must have only letters"); //"[a-zA-Z]+"
+                    System.out.println("Please enter a valid name:");   //"^[a-zA-Z\\s]*$"
                     Name = scan.nextLine();
                 } else {
                     valid = true;
@@ -95,7 +95,10 @@ public class Functionality {
 
         System.out.println("Please enter the date of Birthday(DD/MM/YYYY): ");
 
-        String date = scan.next();
+        //ITS NOT LOOPING INTO THE DATE METHOD
+        //ITS GOING THROUGH JUST 2X
+
+        String date = scan.nextLine();
 
         do {
                 if (date.matches("(0[1-9]|[12][0-9]|[3][01])/(0[1-9]|1[012])/\\d{4}")) {
@@ -127,17 +130,33 @@ public class Functionality {
     public void UpdateCustomers(ArrayList<Customer> listCustomers) {
 
         Scanner scan = new Scanner(System.in);
-        String IdNumber = "-1";
+        String IdNumber;
         boolean valid = false;
 
         System.out.println("----------  Updating Customers and Subscription Plan ----------\n* To return to the menu, type 'exit' *\n");
+        System.out.println("'9999' FOR SHOW ALL THE CUSTOMERS");
         System.out.println("Please, enter a ID Customer:");
 
         try {
             IdNumber = scan.next();
-            if (IdNumber.toLowerCase().contentEquals("exit")) {
+
+            //NOT WORKING
+            //IF PUT LETTER PROGRAM CRASHES
+            // '0' BRING BACK TO MAIN MENU
+
+
+            if (IdNumber.toLowerCase().contentEquals("exit")){
                 return;
+
+            } else if(IdNumber.toLowerCase().contentEquals("9999")){
+                System.out.println();
+                for (Customer cust : listCustomers) {
+                    cust.ShowCustomersDetails();
+                    //ADDED THIS METHOD TO SHOWS THE CUSTOMERS ON THE SCREEN OTHERWISE THE USER WOULDNT KNOW THE ID OF CUSTOMER
+                    //ITS BRINGING BACK TO MENU AFTER SHOW THE CUSTOMERS
+                }
             }
+
             for (Customer cust : listCustomers) {
                 if (cust.getID() == Integer.parseInt(IdNumber)) {
                     System.out.println("The customer was found.");
@@ -161,11 +180,11 @@ public class Functionality {
                     do {
                         valid = false;
 
-                        System.out.println("Please enter the card number: ");
+                        //System.out.println("Please enter the card number: ");
                         CardNumber = scan.next();
 
                         if (!CardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
-                            System.out.println("Please enter a valid number");
+                            System.out.println("Please enter a valid Card Number: ");
                         } else {
                             valid = true;
                         }
@@ -192,6 +211,8 @@ public class Functionality {
                     cust.setBirthday(date);
 
                     do {
+
+                        //PROBLEM TO ACCEPT THE INPUT AFTER TRY THE WRONG ONE
                         valid = false;
 
                         System.out.println("Please choose one of the access levels listed below");
@@ -201,7 +222,7 @@ public class Functionality {
                                 + "- (PR) Premium: Can rent any title\n"
                                 + "- (NONE) No Plan");
                         scan.nextLine();
-                        String SubPlan = scan.nextLine();
+                        String SubPlan = scan.next(); //CHANGED THE NEXTLINE ITS WORKING NOW BUT IS NOT LOOPING
 
                         switch (SubPlan.toUpperCase()) {
                             case "ML":
@@ -321,7 +342,7 @@ public class Functionality {
                     returnMenu = true;
                     break;
                 } else {                // Needs to accept numbers, special characters and space between names
-                    if (title.isEmpty() || !title.matches("[0-9a-zA-Z]+") || !title.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")){
+                    if (title.isEmpty() || !title.matches("^[a-zA-Z0-9\\s]*$")){
                         System.out.println("The name must only contains letters and numbers.");
                         System.out.println("Please enter a valid name:");
                         title = scan.nextLine();
@@ -351,7 +372,7 @@ public class Functionality {
 
                 sYear = scan.nextLine();
 
-                if (sYear.length() != 4 || sYear.matches("[a-zA-Z]+")) {
+                if (sYear.length() != 4 || !sYear.matches("^[0-9]+")) {
                     System.out.println("Please enter a valid number");
                     System.out.println("Please enter the year of release of this title");
                 } else {
@@ -419,12 +440,13 @@ public class Functionality {
             } while (!validFormat);
 
             do {
+
                 System.out.println("Please enter a type for the title");
                 System.out.println("(ML) Music or Live Concert Videos");
                 System.out.println("(VL) Movie");
                 System.out.println("(TV) Box Set");
 
-                String type = scan.next();
+                String type = scan.nextLine();
 
                 switch (type.toUpperCase()) {
                     case "ML":
@@ -467,13 +489,13 @@ public class Functionality {
 
                 System.out.println("Do you want to add another one? Y/N");
 
-                String res = scan.next();
+                String res = scan.nextLine();
 
                 if (res.equalsIgnoreCase("Y")) {
-                    returnMenu = true;
+                    returnMenu = false;
                     validFormat = true;
                 } else if (res.equalsIgnoreCase("N")) {
-                    returnMenu = false;
+                    returnMenu = true;
                     validFormat = true;
                 } else {
                     System.out.println("Please enter a valid option");

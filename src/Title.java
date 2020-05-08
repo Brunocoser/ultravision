@@ -90,7 +90,7 @@ public class Title implements ITitle {
     }
 
     public String printAll() {
-        return "Title: " + getTitle()
+        return "ID: " + getCode() +" Title: " + getTitle()
                 + " | Year Release: " + getYearRelease()
                 + " | Genre: " + getGenre()
                 + " | Director: " + getDirectorOrBand()
@@ -99,7 +99,7 @@ public class Title implements ITitle {
     }
 
     public void ShowTitleDetails() {
-        System.out.println("Title: " + this.Title + " | Year Release: " + this.YearRelease + " | Genre: " + this.Genre +
+        System.out.println("ID: " + this.Code + " | Title: " + this.Title + " | Year Release: " + this.YearRelease + " | Genre: " + this.Genre +
                 "| Director: " + this.DirectorOrBand + " | Format: " + this.FormatValue + " | Type: " + this.Type);
 
     }

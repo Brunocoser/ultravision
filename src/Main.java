@@ -27,7 +27,7 @@ public class Main {
                                +"|   [0] Exit                                 |\n"
                                +"|                                            |\n"
                                +"--------Please, choose a valid option--------");
-            option = myScanner.next();
+            option = myScanner.nextLine();
 
             switch (option){
                 case "0":
@@ -65,7 +65,7 @@ public class Main {
                              + "|   [0] Return to main menu                      |\n"
                              + "|                                                |\n"
                              + "----------Please, choose a valid option----------");
-            option = myScanner.next();
+            option = myScanner.nextLine();
             switch (option){
                 case "0":
                     System.out.println("Return");
