@@ -98,12 +98,11 @@ public class Functionality {
         String date = scan.next();
 
         do {
-                if (date.matches("\\d{2}/\\d{2}/\\d{4}")) {
-                    valid = true;
+                if (date.matches("(0[1-9]|[12][0-9]|[3][01])/(0[1-9]|1[012])/\\d{4}")) {
                 } else {
                     System.out.println("Please enter a valid date");
                     valid = false;
-                    System.out.println("Please enter a valid date of Birthday (DD/MM/YYYY");
+                    System.out.println("Please enter a valid date of Birthday (DD/MM/YYYY)");
                     date = scan.next();
                 }
 
@@ -177,7 +176,7 @@ public class Functionality {
 
                     do {
                         valid = false;
-                        if (date.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                        if (date.matches("(0[1-9]|[12][0-9]|[3][01])/(0[1-9]|1[012])/\\d{4}")) {
                              valid = true;
                             } else {
                                 System.out.println("Invalid date");
