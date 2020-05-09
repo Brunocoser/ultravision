@@ -59,6 +59,7 @@ public class Functionality {
         boolean valid = false;
         String strCustomer = "";
         Scanner scan = new Scanner(System.in);
+        scan.useDelimiter("\\n");
 
         System.out.println("---------- New Customers ----------\n* To return to the menu, type 'exit' *\n");
         System.out.println("Enter a Customer name:");
@@ -70,8 +71,7 @@ public class Functionality {
             do {
                 valid = false;
 
-                if (Name.isEmpty() || !Name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) { // "^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}"
-                    System.out.println("Name must have only letters"); //"[a-zA-Z]+"
+                if (Name.isEmpty()) {
                     System.out.println("Please enter a valid name:");   //"^[a-zA-Z\\s]*$"
                     Name = scan.nextLine();
                 } else {
@@ -98,16 +98,16 @@ public class Functionality {
         //ITS NOT LOOPING INTO THE DATE METHOD
         //ITS GOING THROUGH JUST 2X
 
-        String date = scan.nextLine();
-
+        String date;
         do {
-                if (date.matches("(0[1-9]|[12][0-9]|[3][01])/(0[1-9]|1[012])/\\d{4}")) {
-                } else {
-                    System.out.println("Please enter a valid date");
-                    valid = false;
-                    System.out.println("Please enter a valid date of Birthday (DD/MM/YYYY)");
-                    date = scan.next();
-                }
+            date=  scan.next();
+            if (date.matches("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((18|19|20|21)\\d\\d)")) {
+                valid = true;
+            } else {
+                System.out.println("Please enter a valid date");
+                valid = false;
+                System.out.println("Please enter a valid date of Birthday (DD/MM/YYYY)");
+            }
 
         } while (!valid);
 
@@ -195,7 +195,7 @@ public class Functionality {
 
                     do {
                         valid = false;
-                        if (date.matches("(0[1-9]|[12][0-9]|[3][01])/(0[1-9]|1[012])/\\d{4}")) {
+                        if (date.matches("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((18|19|20|21)\\d\\d)")) {
                              valid = true;
                             } else {
                                 System.out.println("Invalid date");

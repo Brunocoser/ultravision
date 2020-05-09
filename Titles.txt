@@ -1,5 +1,5 @@
-1|Titanic|1997|Romance|James Cameron|DVD|VL|true|
-2|Clueless|1995|romantic comedy|Amy Heckerling|BluRay|VL|false|
+1|Titanic|1997|Romance|James Cameron|DVD|VL|false|
+2|Clueless|1995|romantic comedy|Amy Heckerling|BluRay|VL|true|
 3|Jurassic Park|1993|adventure|Steven Spielberg|BluRay|VL|false|
 4|10 things I hate about you|1999|romantic comedy|Gil Junger|DVD|VL|false|
 5|Toy Story|1995|computer animated|Pixar Animation|BluRay|VL|false|
@@ -42,3 +42,6 @@
 42|Bruno Bond 007|2000|Action|Bruno|DVD|VL|false|
 43|James Bruno|5555|lol|aaaa|DVD|TV|false|
 44|James James|4000|Action|Direcotr|DVD|TV|false|
+45|GOT1234|2|Action|Brian|CD|TV|false|
+46|James Obrina|2000|Action|Obrian|BluRay|TV|false|
+47|Bruno Bond|2000|Action|Jamees|CD|ML|false|
