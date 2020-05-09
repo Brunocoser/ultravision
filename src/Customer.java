@@ -14,7 +14,7 @@ public class Customer implements ICustomer {
     private boolean freeRentAllowed;
     private ArrayList<CustomerTitle> TitlesRented; //MAKE IT FINAL?
 
-    public Customer (int intId, String strName, String strCardNumber, String strBirthday, Plans SubscriptionPlan, int Points){
+    public Customer (int intId, String strName, String strCardNumber, String strBirthday, Plans SubscriptionPlan, int points){
         this.intId = intId;
         this.strName = strName;
         this.strCardNumber = strCardNumber;

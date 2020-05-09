@@ -93,8 +93,8 @@ public class Main {
     public static void menuCustomer(ArrayList<Title> listTitles, ArrayList<Customer> listCustomers) {
 
         Functionality functionality = new Functionality();
-
         Scanner myScanner = new Scanner(System.in);
+        myScanner.useDelimiter("\\n");
         String option = "";
 
         do {
@@ -106,7 +106,7 @@ public class Main {
                     + "|   [0] Return to main menu                      |\n"
                     + "|                                                |\n"
                     + "----------Please, choose a valid option----------");
-            option = myScanner.nextLine();
+           option = myScanner.nextLine();
             switch (option) {
                 case "0":
                     System.out.println("Return");
