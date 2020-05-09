@@ -7,12 +7,11 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 public class Load {
 
     ArrayList<Customer> M_listCustomers = new ArrayList<Customer>();
-    static ArrayList<Title> M_listTitles = new ArrayList<Title>();
+    static ArrayList<title> M_listTitles = new ArrayList<title>();
     ArrayList<CustomerTitle> M_listCustomersTitles = new ArrayList<CustomerTitle>();
 
     public void LoadCustomers(){
@@ -69,7 +68,7 @@ public class Load {
 
     public void LoadTitles(){
 
-        ArrayList<Title> listTitles = new ArrayList<Title>();
+        ArrayList<title> listTitles = new ArrayList<title>();
 
         try {
             FileInputStream stream = new FileInputStream("Titles.txt");
@@ -91,7 +90,7 @@ public class Load {
 
                 boolean rented = Boolean.valueOf(sRented);
 
-                Title t = new Title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
+                title t = new title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
 
                 switch (format.toLowerCase()){
                     case "cd":
@@ -181,7 +180,7 @@ public class Load {
         }
 
         public void joinTitleRented(){
-        Title title = null;
+        title title = null;
 
         try {
             for (Customer c : M_listCustomers){
@@ -207,13 +206,13 @@ public class Load {
         }
         }
 
-        public static Title SearchTitleById(int id) {
+        public static title SearchTitleById(int id) {
 
             for (int i = 0; i < M_listTitles.size(); i++){
 
                 if (M_listTitles.get(i).getCode() == id){
 
-                    Title title = new Title(M_listTitles.get(i).getCode(), M_listTitles.get(i).getTitle(),
+                    title title = new title(M_listTitles.get(i).getCode(), M_listTitles.get(i).getTitle(),
                             M_listTitles.get(i).getYearRelease(), M_listTitles.get(i).getGenre(), M_listTitles.get(i).getDirectorOrBand(),
                             M_listTitles.get(i).getFormatValue(), M_listTitles.get(i).getType(), M_listTitles.get(i).isRented());
                     return title;
@@ -222,7 +221,7 @@ public class Load {
             return null;
         }
 
-        public ArrayList<Title> returnListTitles(){
+        public ArrayList<title> returnListTitles(){
         return M_listTitles;
         }
         public ArrayList<Customer> returnListCustomers(){

@@ -45,7 +45,7 @@ public class Main {
         } while (true);
     }
 
-    public static void menuEmployee(ArrayList<Title> listTitles, ArrayList<Customer> listCustomers) throws IOException {
+    public static void menuEmployee(ArrayList<title> listTitles, ArrayList<Customer> listCustomers) throws IOException {
 
         Functionality functionality = new Functionality();
 
@@ -90,7 +90,7 @@ public class Main {
         } while (!option.equals("0"));
     }
 
-    public static void menuCustomer(ArrayList<Title> listTitles, ArrayList<Customer> listCustomers) {
+    public static void menuCustomer(ArrayList<title> listTitles, ArrayList<Customer> listCustomers) {
 
         Functionality functionality = new Functionality();
 

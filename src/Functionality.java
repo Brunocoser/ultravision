@@ -276,7 +276,7 @@ public class Functionality {
 
     }
 
-    public void SearchTitle(ArrayList<Title> listTitles) {
+    public void SearchTitle(ArrayList<title> listTitles) {
         Scanner scan = new Scanner(System.in);
         boolean returnMenu = false;
         do {
@@ -294,8 +294,8 @@ public class Functionality {
             }
             else if(TitleName.toLowerCase().contentEquals("all")){
                 System.out.println();
-                for (Title title : listTitles){
-                    title.ShowTitleDetails();
+                for (title title : listTitles){
+                    title.showTitleDetails();
                     found = true;
                 }
 
@@ -309,7 +309,7 @@ public class Functionality {
         } while (!returnMenu);
     }
 
-    public void AddTitle(ArrayList<Title> listTitles, Scanner scan) {
+    public void AddTitle(ArrayList<title> listTitles, Scanner scan) {
         boolean returnMenu = false;
         String strTitle;
 
@@ -402,7 +402,7 @@ public class Functionality {
                 }
             } while (!validFormat);
 
-            Title t = new Title(listTitles.size() + 1, title, year, genre, DirectorOrBand, null, null, false);
+            title t = new title(listTitles.size() + 1, title, year, genre, DirectorOrBand, null, null, false);
 
             do {
                 validFormat = false;
@@ -493,7 +493,7 @@ public class Functionality {
         } while (!returnMenu);
     }
 
-    public void RegisterRent(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
+    public void RegisterRent(ArrayList<Customer> listCustomers, ArrayList<title> listTitles, Scanner scan) {
 
         String IdNumber = "-1";
         CustomerTitle cTitle = null;
@@ -510,12 +510,12 @@ public class Functionality {
                 return;
             }
 
-            for (Title title : listTitles) {
+            for (title title : listTitles) {
 
                 if (title.getCode() == Integer.parseInt(IdNumber)) {
                     foundTitle = true;
                     System.out.println("The title found");
-                    ShowDetails(null, new ArrayList<Title>(Arrays.asList(title)), null);
+                    ShowDetails(null, new ArrayList<title>(Arrays.asList(title)), null);
 
                     if (title.isRented()) {
                         System.out.println("Title is already rented");
@@ -608,7 +608,7 @@ public class Functionality {
         }
     }
 
-    public void ReturnTitle(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
+    public void ReturnTitle(ArrayList<Customer> listCustomers, ArrayList<title> listTitles, Scanner scan) {
 
         String IdNumber = "-1";
         Boolean found = false;
@@ -692,7 +692,7 @@ public class Functionality {
         }
     }
 
-    public CustomerTitle TitleToCustomerTitle(Title title, int idCustomer) {
+    public CustomerTitle TitleToCustomerTitle(title title, int idCustomer) {
         CustomerTitle cTitle = new CustomerTitle(title.getCode(), title.getTitle(), title.getYearRelease(),
                 title.getGenre(), title.getDirectorOrBand(), title.getFormatValue(), title.getType(), title.isRented());
         cTitle.setIDCustomer(idCustomer);
@@ -732,11 +732,11 @@ public class Functionality {
         }
     }
 
-    public void RenewTitles(ArrayList<Title> listTitles, int code, boolean rented){
+    public void RenewTitles(ArrayList<title> listTitles, int code, boolean rented){
         boolean renew = false;
         int controlRenew = -1;
 
-        for (Title t : listTitles){
+        for (title t : listTitles){
             if (t.getCode() == code){
                 t.setRented(rented);
             }
@@ -760,7 +760,7 @@ public class Functionality {
         }
     }
 
-    public boolean ShowDetails(ArrayList<CustomerTitle> listCTitles, ArrayList<Title> listTitles, String TitleName){
+    public boolean ShowDetails(ArrayList<CustomerTitle> listCTitles, ArrayList<title> listTitles, String TitleName){
         boolean found = false;
 
         if (listCTitles != null){
@@ -769,11 +769,11 @@ public class Functionality {
             }
         } else {
             if (TitleName == null) {
-                for (Title title : listTitles){
+                for (title title : listTitles){
                     System.out.println(title.printAll());
                 }
             } else {
-                for (Title title : listTitles) {
+                for (title title : listTitles) {
                     if (title.getTitle().toLowerCase().equals(TitleName.toLowerCase())){
                         System.out.println(title.printAll());
                         found = true;
