@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Load {
+public class load {
 
     ArrayList<Customer> M_listCustomers = new ArrayList<Customer>();
     static ArrayList<title> M_listTitles = new ArrayList<title>();

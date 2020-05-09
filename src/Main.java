@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        Load load = new Load();
+        load load = new load();
 
         load.LoadCustomers();
         load.LoadTitles();
