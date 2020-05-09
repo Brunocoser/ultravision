@@ -9,7 +9,7 @@ public class Main {
         load load = new load();
 
         load.loadCustomers();
-        load.LoadTitles();
+        load.loadTitles();
         load.LoadCustomerTitles();
         load.joinTitleRented();
 

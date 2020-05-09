@@ -66,7 +66,7 @@ public class load {
 
     }
 
-    public void LoadTitles(){
+    public void loadTitles(){
 
         ArrayList<title> listTitles = new ArrayList<title>();
 
