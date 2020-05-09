@@ -8,7 +8,7 @@ public class Main {
 
         load load = new load();
 
-        load.LoadCustomers();
+        load.loadCustomers();
         load.LoadTitles();
         load.LoadCustomerTitles();
         load.joinTitleRented();

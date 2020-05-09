@@ -14,7 +14,7 @@ public class load {
     static ArrayList<title> M_listTitles = new ArrayList<title>();
     ArrayList<CustomerTitle> M_listCustomersTitles = new ArrayList<CustomerTitle>();
 
-    public void LoadCustomers(){
+    public void loadCustomers(){
         ArrayList<Customer> listCustomers = new ArrayList<Customer>();
         try {
             FileInputStream stream = new FileInputStream("Customers.txt");
