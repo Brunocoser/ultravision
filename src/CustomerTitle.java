@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CustomerTitle extends title {
+public class CustomerTitle extends Title {
 
     public int IDCustomer;
     public Date DateRent;

@@ -11,7 +11,7 @@ import java.util.Date;
 public class load {
 
     ArrayList<Customer> M_listCustomers = new ArrayList<Customer>();
-    static ArrayList<title> M_listTitles = new ArrayList<title>();
+    static ArrayList<Title> M_listTitles = new ArrayList<Title>();
     ArrayList<CustomerTitle> M_listCustomersTitles = new ArrayList<CustomerTitle>();
 
     public void loadCustomers() {
@@ -68,7 +68,7 @@ public class load {
 
     public void loadTitles() {
 
-        ArrayList<title> listTitles = new ArrayList<title>();
+        ArrayList<Title> listTitles = new ArrayList<Title>();
 
         try {
             FileInputStream stream = new FileInputStream("Titles.txt");
@@ -90,7 +90,7 @@ public class load {
 
                 boolean rented = Boolean.valueOf(sRented);
 
-                title t = new title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
+                Title t = new Title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
 
                 switch (format.toLowerCase()) {
                     case "cd":
@@ -180,7 +180,7 @@ public class load {
     }
 
     public void joinTitleRented() {
-        title title = null;
+        Title title = null;
 
         try {
             for (Customer c : M_listCustomers) {
@@ -206,13 +206,13 @@ public class load {
         }
     }
 
-    public static title searchTitleById(int id) {
+    public static Title searchTitleById(int id) {
 
         for (int i = 0; i < M_listTitles.size(); i++) {
 
             if (M_listTitles.get(i).getCode() == id) {
 
-                title title = new title(M_listTitles.get(i).getCode(), M_listTitles.get(i).getTitle(),
+                Title title = new Title(M_listTitles.get(i).getCode(), M_listTitles.get(i).getTitle(),
                         M_listTitles.get(i).getYearRelease(), M_listTitles.get(i).getGenre(), M_listTitles.get(i).getDirectorOrBand(),
                         M_listTitles.get(i).getFormatValue(), M_listTitles.get(i).getType(), M_listTitles.get(i).isRented());
                 return title;
@@ -221,7 +221,7 @@ public class load {
         return null;
     }
 
-    public ArrayList<title> returnListTitles() {
+    public ArrayList<Title> returnListTitles() {
         return M_listTitles;
     }
 
