@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        load load = new load();
+        Load load = new Load();
 
         load.loadCustomers();
         load.loadTitles();
