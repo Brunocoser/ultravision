@@ -140,7 +140,7 @@ public class load {
 
         public void loadCustomerTitles(){
 
-        CustomerTitle t = null;
+        CustomerTitle t;
         ArrayList<CustomerTitle> listCustomersTitles = new ArrayList<CustomerTitle>();
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
