@@ -130,139 +130,131 @@ public class Functionality {
     public void UpdateCustomers(ArrayList<Customer> listCustomers) {
 
         Scanner scan = new Scanner(System.in);
-        String IdNumber;
+        scan.useDelimiter("\\n");
         boolean valid = false;
 
-        System.out.println("----------  Updating Customers and Subscription Plan ----------\n* To return to the menu, type 'exit' *\n");
-        System.out.println("'9999' FOR SHOW ALL THE CUSTOMERS");
-        System.out.println("Please, enter a ID Customer:");
+        do {
+            String IdNumber;
+            System.out.println();
+            System.out.println("----------  Updating Customers and Subscription Plan ----------\n* To return to the menu, type 'exit' *\n");
+            System.out.println("'all' FOR SHOW ALL THE CUSTOMERS");
+            System.out.println("Please, enter a ID Customer:");
 
-        try {
-            IdNumber = scan.next();
+            try {
+                IdNumber = scan.next();
+                if (IdNumber.toLowerCase().contentEquals("exit")) {
+                    return;
 
-            //NOT WORKING
-            //IF PUT LETTER PROGRAM CRASHES
-            // '0' BRING BACK TO MAIN MENU
+                } else if (IdNumber.toLowerCase().contentEquals("all")) {
+                    System.out.println();
+                    for (Customer cust : listCustomers) {
+                        cust.ShowCustomersDetails();
+                    }
+                } else {
+                    for (Customer cust : listCustomers) {
+                        if (cust.getID() == Integer.parseInt(IdNumber)) {
+                            System.out.println("The customer was found.");
+                            cust.ShowCustomersDetails();
 
+                            System.out.println("Please enter a valid name");
+                            String name ;
 
-            if (IdNumber.toLowerCase().contentEquals("exit")){
-                return;
-
-            } else if(IdNumber.toLowerCase().contentEquals("9999")){
-                System.out.println();
-                for (Customer cust : listCustomers) {
-                    cust.ShowCustomersDetails();
-                    //ADDED THIS METHOD TO SHOWS THE CUSTOMERS ON THE SCREEN OTHERWISE THE USER WOULDNT KNOW THE ID OF CUSTOMER
-                    //ITS BRINGING BACK TO MENU AFTER SHOW THE CUSTOMERS
-                }
-            }
-
-            for (Customer cust : listCustomers) {
-                if (cust.getID() == Integer.parseInt(IdNumber)) {
-                    System.out.println("The customer was found.");
-                    cust.ShowCustomersDetails();
-
-                    System.out.println("Please enter a valid name");
-                    String name = scan.next();
-
-                    do {
-                        valid = false;
-
-                        if (name.isEmpty() || !name.matches("^\\p{L}+[\\p{L}\\p{Z}\\p{P}]{0,}")) {
-                            System.out.println("The name must have only letters");
-                        } else {
-                            valid = true;
-                        }
-                    } while (!valid);
-
-                    String CardNumber;
-
-                    do {
-                        valid = false;
-
-                        //System.out.println("Please enter the card number: ");
-                        CardNumber = scan.next();
-
-                        if (!CardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
-                            System.out.println("Please enter a valid Card Number: ");
-                        } else {
-                            valid = true;
-                        }
-                    } while (!valid);
-
-                    System.out.println("Enter a new date of birthday (dd/mm/yyyy)");
-                    String date = scan.next();
-
-                    do {
-                        valid = false;
-                        if (date.matches("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((18|19|20|21)\\d\\d)")) {
-                             valid = true;
-                            } else {
-                                System.out.println("Invalid date");
+                            do {
                                 valid = false;
-                                System.out.println("Please enter a valid date of birthday (dd/mm/yyyy)");
-                                date = scan.next();
-                            }
+                                name = scan.next();
+                                if (name.isEmpty()) {
+                                    System.out.println("The name must have only letters");
+                                } else {
+                                    valid = true;
+                                }
+                            } while (!valid);
 
-                    } while (!valid);
+                            String CardNumber;
 
-                    cust.setName(name);
-                    cust.setCardNumber(CardNumber);
-                    cust.setBirthday(date);
-
-                    do {
-
-                        //PROBLEM TO ACCEPT THE INPUT AFTER TRY THE WRONG ONE
-                        valid = false;
-
-                        System.out.println("Please choose one of the access levels listed below");
-                        System.out.println("- (ML) Music Lovers: Can only rent Music CDs and Live Concert Videos\r\n"
-                                + "- (VL) Video Lovers: Can only rent Movies (excluding Live Concert Videos)\r\n"
-                                + "- (TV) TV Lover: Can only rent Box Sets.\r\n"
-                                + "- (PR) Premium: Can rent any title\n"
-                                + "- (NONE) No Plan");
-                        scan.nextLine();
-                        String SubPlan = scan.next(); //CHANGED THE NEXTLINE ITS WORKING NOW BUT IS NOT LOOPING
-
-                        switch (SubPlan.toUpperCase()) {
-                            case "ML":
-                                cust.setSubPlan(Plans.ML);
-                                valid = true;
-                                break;
-                            case "VL":
-                                cust.setSubPlan(Plans.VL);
-                                valid = true;
-                                break;
-                            case "TV":
-                                cust.setSubPlan(Plans.TV);
-                                valid = true;
-                                break;
-                            case "PR":
-                                cust.setSubPlan(Plans.PR);
-                                valid = true;
-                                break;
-                            case "NONE":
-                                cust.setSubPlan(Plans.NONE);
-                                valid = true;
-                                break;
-                            default:
-                                System.out.println("Invalid option. Please try it again");
+                            do {
                                 valid = false;
-                                break;
+
+                                System.out.println("Please enter the card number: ");
+                                CardNumber = scan.next();
+
+                                if (!CardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
+                                    System.out.println("Please enter a valid Card Number: ");
+                                } else {
+                                    valid = true;
+                                }
+                            } while (!valid);
+
+                            System.out.println("Enter a new date of birthday (dd/mm/yyyy)");
+                            String date = scan.next();
+
+                            do {
+                                valid = false;
+                                if (date.matches("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((18|19|20|21)\\d\\d)")) {
+                                    valid = true;
+                                } else {
+                                    System.out.println("Invalid date");
+                                    System.out.println("Please enter a valid date of birthday (dd/mm/yyyy)");
+                                    date = scan.next();
+                                }
+
+                            } while (!valid);
+
+                            cust.setName(name);
+                            cust.setCardNumber(CardNumber);
+                            cust.setBirthday(date);
+
+                            do {
+                                valid = false;
+
+                                System.out.println("Please choose one of the access levels listed below");
+                                System.out.println("- (ML) Music Lovers: Can only rent Music CDs and Live Concert Videos\r\n"
+                                        + "- (VL) Video Lovers: Can only rent Movies (excluding Live Concert Videos)\r\n"
+                                        + "- (TV) TV Lover: Can only rent Box Sets.\r\n"
+                                        + "- (PR) Premium: Can rent any title\n"
+                                        + "- (NONE) No Plan");
+                                String SubPlan = scan.next();
+
+                                switch (SubPlan.toUpperCase()) {
+                                    case "ML":
+                                        cust.setSubPlan(Plans.ML);
+                                        valid = true;
+                                        break;
+                                    case "VL":
+                                        cust.setSubPlan(Plans.VL);
+                                        valid = true;
+                                        break;
+                                    case "TV":
+                                        cust.setSubPlan(Plans.TV);
+                                        valid = true;
+                                        break;
+                                    case "PR":
+                                        cust.setSubPlan(Plans.PR);
+                                        valid = true;
+                                        break;
+                                    case "NONE":
+                                        cust.setSubPlan(Plans.NONE);
+                                        valid = true;
+                                        break;
+                                    default:
+                                        System.out.println("Invalid option. Please try it again");
+                                        valid = false;
+                                        break;
+                                }
+                            } while (!valid);
+                            valid = true;
+                            System.out.println("Details updated");
+
+                            break;
+
                         }
-                    } while (!valid);
-
-                    System.out.println("Details updated");
-
-                    break;
-
+                    }
+                    UnloadCustomers(listCustomers);
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("It wasn't possible to update the customer details.");
             }
-            UnloadCustomers(listCustomers);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("It wasn't possible to update the customer details.");
-        }
+        }while (!valid);
     }
 
     public void UnloadCustomers(ArrayList<Customer> listCustomers) {
