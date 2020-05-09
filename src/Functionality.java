@@ -106,10 +106,10 @@ public class Functionality {
 
         } while (!valid);
 
-        Customer c = new Customer(listCustomers.size() + 1, Name, CardNumber, date, Plans.NONE, 0);
-        listCustomers.add(c);
+        Customer newCustomer = new Customer(listCustomers.size() + 1, Name, CardNumber, date, Plans.NONE, 0);
+        listCustomers.add(newCustomer);
 
-        strCustomer = c.getIntId() + "|" + c.getStrName() + "|" + c.getStrCardNumber() + "|" + date + "|NONE|0|";
+        strCustomer = newCustomer.getIntId() + "|" + newCustomer.getStrName() + "|" + newCustomer.getStrCardNumber() + "|" + date + "|NONE|0|";
 
         try {
             FileWriter fw = new FileWriter("Customers.txt", true);
@@ -119,7 +119,7 @@ public class Functionality {
             e.printStackTrace();
         }
 
-        System.out.println(c.getStrName() + " was added to the list.");
+        System.out.println(newCustomer.getStrName() + " was added to the list.");
     }
 
     public void UpdateCustomers(ArrayList<Customer> listCustomers) {
@@ -530,13 +530,13 @@ public class Functionality {
                             int IDCustomer = Integer.parseInt(answer);
                             boolean found = false;
 
-                            for (Customer c : listCustomers) {
+                            for (Customer newCustomer : listCustomers) {
 
-                                if (c.getIntId() == IDCustomer) {
+                                if (newCustomer.getIntId() == IDCustomer) {
                                     found = true;
 
-                                    if (c.getArrayTitlesRented().size() < 4) {
-                                        if (c.getSubPlan().equals(Plans.PR) || c.getSubPlan().equals(title.getType())) {
+                                    if (newCustomer.getArrayTitlesRented().size() < 4) {
+                                        if (newCustomer.getSubPlan().equals(Plans.PR) || newCustomer.getSubPlan().equals(title.getType())) {
 
                                             cTitle = TitleToCustomerTitle(title, IDCustomer);
                                             cTitle.rentTitle();
@@ -544,27 +544,27 @@ public class Functionality {
                                             title.setRented(true);
                                             RenewTitles(listTitles, cTitle.getCode(), true);
 
-                                            if (c.isFreeRentAllowed()) {
+                                            if (newCustomer.isFreeRentAllowed()) {
                                                 System.out.println("This customer has a free rent. \n Would you like to use the points?('Y/N'");
 
                                                 String answerPoints = scan.next();
 
                                                 if (answerPoints.toLowerCase().equalsIgnoreCase("y")) {
 
-                                                    c.availFreeRent();
+                                                    newCustomer.availFreeRent();
 
-                                                    System.out.println(c.getStrName() + "rented " + title.getTitle()
+                                                    System.out.println(newCustomer.getStrName() + "rented " + title.getTitle()
                                                             + "and it is free of charge. 100 loyalty points deducted.");
                                                     done = true;
                                                 }
                                             }
                                             if (!done) {
-                                                c.addPoints(10);
+                                                newCustomer.addPoints(10);
 
-                                                System.out.println(c.getStrName() + " rented " + title.getTitle()
+                                                System.out.println(newCustomer.getStrName() + " rented " + title.getTitle()
                                                         + "and 10 loyalty points has been added to his account");
                                             }
-                                            c.getArrayTitlesRented().add(cTitle);
+                                            newCustomer.getArrayTitlesRented().add(cTitle);
 
                                             String strTitle = cTitle.getIDCustomer() + "|" + cTitle.getCode() + "|" +
                                                     cTitle.getStringDateRent() + "|" + cTitle.getStringDateReturn() + "|";
@@ -578,11 +578,11 @@ public class Functionality {
                                             UnloadCustomers(listCustomers);
                                             break;
                                         } else {
-                                            System.out.println("Customer plan(" + c.getSubPlan().toString() + ") can not rent this title(" +
+                                            System.out.println("Customer plan(" + newCustomer.getSubPlan().toString() + ") can not rent this title(" +
                                                     title.getType().toString() + ")");
                                         }
                                     } else {
-                                        System.out.println("The customer has already rented " + c.getArrayTitlesRented().size() + " titles.");
+                                        System.out.println("The customer has already rented " + newCustomer.getArrayTitlesRented().size() + " titles.");
 
                                     }
                                 }

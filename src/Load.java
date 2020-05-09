@@ -183,9 +183,9 @@ public class Load {
         Title title = null;
 
         try {
-            for (Customer c : M_listCustomers) {
+            for (Customer newCustomer : M_listCustomers) {
                 for (CustomerTitle ct : M_listCustomersTitles) {
-                    if (c.getIntId() == ct.getIDCustomer()) {
+                    if (newCustomer.getIntId() == ct.getIDCustomer()) {
 
                         title = searchTitleById(ct.getCode());
 
@@ -197,7 +197,7 @@ public class Load {
                         ct.setType(title.getType());
                         ct.setRented(title.isRented());
 
-                        c.addArrayTitlesRented(ct);
+                        newCustomer.addArrayTitlesRented(ct);
                     }
                 }
             }
