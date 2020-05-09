@@ -16,7 +16,6 @@ public class CustomerTitle extends Title {
     }
 
     public int getIDCustomer(){
-
         return IDCustomer;
     }
     public void setIDCustomer(int iDCustomer){
@@ -47,6 +46,7 @@ public class CustomerTitle extends Title {
     public void setDateReturn(Date dateReturn){
         DateReturn = dateReturn;
     }
+
     public void rentTitle(){
         Date date = new Date();
 

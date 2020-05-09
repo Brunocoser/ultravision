@@ -6,19 +6,19 @@ import java.util.ArrayList;
 public class Customer implements ICustomer {
 
     private int intId;
-    private String strName;
-    private String strCardNumber;
-    private String strBirthday;
+    private String name;
+    private String cardNumber;
+    private String birthday;
     private Plans subPlan;
     private int points;
     private boolean freeRentAllowed;
     private ArrayList<CustomerTitle> TitlesRented; //MAKE IT FINAL?
 
-    public Customer (int intId, String strName, String strCardNumber, String strBirthday, Plans SubscriptionPlan, int points){
+    public Customer (int intId, String name, String cardNumber, String birthday, Plans SubscriptionPlan, int points){
         this.intId = intId;
-        this.strName = strName;
-        this.strCardNumber = strCardNumber;
-        this.strBirthday = strBirthday;
+        this.name = name;
+        this.cardNumber = cardNumber;
+        this.birthday = birthday;
         this.subPlan = SubscriptionPlan;
         this.TitlesRented = new ArrayList<CustomerTitle>();
     }
@@ -31,28 +31,28 @@ public class Customer implements ICustomer {
         intId = iD;
     }
 
-    public String getStrName() {
-        return strName;
+    public String getName() {
+        return name;
     }
 
-    public void setStrName(String strName) {
-        this.strName = strName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getStrCardNumber() {
-        return strCardNumber;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setStrCardNumber(String strCardNumber) {
-        this.strCardNumber = strCardNumber;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
-    public String getStrBirthday() {
-        return strBirthday;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setStrBirthday(String strBirthday) {
-        this.strBirthday = strBirthday;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public Plans getSubPlan() {
@@ -103,7 +103,7 @@ public class Customer implements ICustomer {
     }
 
     public void showCustomersDetails(){
-        System.out.println("ID: " + this.intId + " | Name: " + this.strName + " | Date of Birthday: " + this.strBirthday + "| Subs Plan: " + this.subPlan + " Points: " + this.getPoints());
+        System.out.println("ID: " + this.intId + " | Name: " + this.name + " | Date of Birthday: " + this.birthday + "| Subs Plan: " + this.subPlan + " Points: " + this.getPoints());
 
     }
 
