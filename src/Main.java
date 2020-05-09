@@ -15,6 +15,7 @@ public class Main {
 
 
         Scanner myScanner = new Scanner(System.in);
+        myScanner.useDelimiter("\\n");
         String option;
 
         do {
@@ -48,8 +49,8 @@ public class Main {
     public static void menuEmployee(ArrayList<Title> listTitles, ArrayList<Customer> listCustomers) throws IOException {
 
         Functionality functionality = new Functionality();
-
         Scanner myScanner = new Scanner(System.in);
+        myScanner.useDelimiter("\\n");
         String option = "";
 
         do {
