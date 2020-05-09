@@ -14,7 +14,7 @@ public class load {
     static ArrayList<title> M_listTitles = new ArrayList<title>();
     ArrayList<CustomerTitle> M_listCustomersTitles = new ArrayList<CustomerTitle>();
 
-    public void loadCustomers(){
+    public void loadCustomers() {
         ArrayList<Customer> listCustomers = new ArrayList<Customer>();
         try {
             FileInputStream stream = new FileInputStream("Customers.txt");
@@ -22,9 +22,9 @@ public class load {
             BufferedReader bufferedR = new BufferedReader(reader);
             String line = bufferedR.readLine();
 
-            while (line != null){
+            while (line != null) {
 
-                String [] field = line.split("\\|");
+                String[] field = line.split("\\|");
                 int id = Integer.parseInt(field[0]);
                 String name = field[1];
                 String card = field[2];
@@ -32,9 +32,9 @@ public class load {
                 String SubPlan = field[4];
                 int points = Integer.parseInt(field[5]);
 
-                Customer c = new Customer (id, name, card, Birthday, null, points);
+                Customer c = new Customer(id, name, card, Birthday, null, points);
 
-                switch (SubPlan.toUpperCase()){
+                switch (SubPlan.toUpperCase()) {
                     case "ML":
                         c.setSubPlan(Plans.ML);
                         break;
@@ -60,13 +60,13 @@ public class load {
             }
 
             M_listCustomers = listCustomers;
-        }catch (Exception e){
+        } catch (Exception e) {
             showError(e, 1);
         }
 
     }
 
-    public void loadTitles(){
+    public void loadTitles() {
 
         ArrayList<title> listTitles = new ArrayList<title>();
 
@@ -76,23 +76,23 @@ public class load {
             BufferedReader bufferedR = new BufferedReader(reader);
             String line = bufferedR.readLine();
 
-            while (line != null){
+            while (line != null) {
 
-                String [] field = line.split("\\|");
+                String[] field = line.split("\\|");
                 Integer id = Integer.parseInt(field[0]);
                 String title = field[1];
                 Integer yearRelease = Integer.parseInt(field[2]);
                 String genre = field[3];
                 String directorOrBand = field[4];
                 String format = field[5];
-                String type = field [6];
+                String type = field[6];
                 String sRented = field[7];
 
                 boolean rented = Boolean.valueOf(sRented);
 
                 title t = new title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
 
-                switch (format.toLowerCase()){
+                switch (format.toLowerCase()) {
                     case "cd":
                         t.setFormatValue(MediaFormats.CD);
                         break;
@@ -107,7 +107,7 @@ public class load {
                         break;
                 }
 
-                switch (type.toUpperCase()){
+                switch (type.toUpperCase()) {
                     case "ML":
                         t.setType(Plans.ML);
                         break;
@@ -126,66 +126,66 @@ public class load {
                     default:
                         t.setType(Plans.NONE);
                         break;
-            }
-            line = bufferedR.readLine();
+                }
+                line = bufferedR.readLine();
                 listTitles.add(t);
-        }
-        }catch (Exception e){
+            }
+        } catch (Exception e) {
             showError(e, 2);
         }
 
         M_listTitles = listTitles;
 
-        }
+    }
 
-        public void loadCustomerTitles(){
+    public void loadCustomerTitles() {
 
         CustomerTitle t;
         ArrayList<CustomerTitle> listCustomersTitles = new ArrayList<CustomerTitle>();
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-            try{
-                FileInputStream stream = new FileInputStream("CustomerTitle.txt");
-                InputStreamReader reader = new InputStreamReader(stream);
-                BufferedReader bufferedR = new BufferedReader(reader);
-                String line = bufferedR.readLine();
+        try {
+            FileInputStream stream = new FileInputStream("CustomerTitle.txt");
+            InputStreamReader reader = new InputStreamReader(stream);
+            BufferedReader bufferedR = new BufferedReader(reader);
+            String line = bufferedR.readLine();
 
-                while (line != null){
+            while (line != null) {
 
-                    String[] field = line.split("\\|");
+                String[] field = line.split("\\|");
 
-                    int idCustomer = Integer.parseInt(field[0]);
-                    int idTitle = Integer.parseInt(field[1]);
-                    String sDateRent = field[2];
-                    String sDateReturn = field[3];
+                int idCustomer = Integer.parseInt(field[0]);
+                int idTitle = Integer.parseInt(field[1]);
+                String sDateRent = field[2];
+                String sDateReturn = field[3];
 
-                    Date DateRent = format.parse(sDateRent);
-                    Date DateReturn = format.parse(sDateReturn);
+                Date DateRent = format.parse(sDateRent);
+                Date DateReturn = format.parse(sDateReturn);
 
-                    t = new CustomerTitle(idTitle, "", 0, "", "", MediaFormats.NONE, Plans.NONE, false);
-                    t.setIDCustomer(idCustomer);
-                    t.setDateRent(DateRent);
-                    t.setDateReturn(DateReturn);
+                t = new CustomerTitle(idTitle, "", 0, "", "", MediaFormats.NONE, Plans.NONE, false);
+                t.setIDCustomer(idCustomer);
+                t.setDateRent(DateRent);
+                t.setDateReturn(DateReturn);
 
-                    line = bufferedR.readLine();
+                line = bufferedR.readLine();
 
-                    listCustomersTitles.add(t);
-                }
-
-            }catch (Exception e){
-                showError(e, 3);
+                listCustomersTitles.add(t);
             }
 
-            M_listCustomersTitles = listCustomersTitles;
+        } catch (Exception e) {
+            showError(e, 3);
         }
 
-        public void joinTitleRented(){
+        M_listCustomersTitles = listCustomersTitles;
+    }
+
+    public void joinTitleRented() {
         title title = null;
 
         try {
-            for (Customer c : M_listCustomers){
-                for (CustomerTitle ct : M_listCustomersTitles){
-                    if(c.getID() == ct.getIDCustomer()){
+            for (Customer c : M_listCustomers) {
+                for (CustomerTitle ct : M_listCustomersTitles) {
+                    if (c.getID() == ct.getIDCustomer()) {
 
                         title = searchTitleById(ct.getCode());
 
@@ -201,55 +201,57 @@ public class load {
                     }
                 }
             }
-        }   catch (Exception e){
-                showError(e, 4);
+        } catch (Exception e) {
+            showError(e, 4);
         }
-        }
+    }
 
-        public static title searchTitleById(int id) {
+    public static title searchTitleById(int id) {
 
-            for (int i = 0; i < M_listTitles.size(); i++){
+        for (int i = 0; i < M_listTitles.size(); i++) {
 
-                if (M_listTitles.get(i).getCode() == id){
+            if (M_listTitles.get(i).getCode() == id) {
 
-                    title title = new title(M_listTitles.get(i).getCode(), M_listTitles.get(i).getTitle(),
-                            M_listTitles.get(i).getYearRelease(), M_listTitles.get(i).getGenre(), M_listTitles.get(i).getDirectorOrBand(),
-                            M_listTitles.get(i).getFormatValue(), M_listTitles.get(i).getType(), M_listTitles.get(i).isRented());
-                    return title;
-                }
+                title title = new title(M_listTitles.get(i).getCode(), M_listTitles.get(i).getTitle(),
+                        M_listTitles.get(i).getYearRelease(), M_listTitles.get(i).getGenre(), M_listTitles.get(i).getDirectorOrBand(),
+                        M_listTitles.get(i).getFormatValue(), M_listTitles.get(i).getType(), M_listTitles.get(i).isRented());
+                return title;
             }
-            return null;
         }
+        return null;
+    }
 
-        public ArrayList<title> returnListTitles(){
+    public ArrayList<title> returnListTitles() {
         return M_listTitles;
-        }
-        public ArrayList<Customer> returnListCustomers(){
+    }
+
+    public ArrayList<Customer> returnListCustomers() {
         ArrayList<Customer> listCustomers = M_listCustomers;
         return listCustomers;
-        }
-        public void showError(Exception e, int pointError){
+    }
 
-            switch (pointError){
-                case 1:
-                    System.out.println(e + "\n ERROR LOAD CUSTOMERS");
-                    break;
-                case 2:
-                    System.out.println(e + "\n ERROR LOAD TITLES");
-                    break;
-                case 3:
-                    System.out.println(e + "\n ERROR LOAD TITLES RENTED");
-                    break;
-                case 4:
-                    System.out.println(e + "\n ERROR CUSTOMERS TITLES");
-                    break;
-                default:
-                    System.out.println(e);
-                    break;
-            }
+    public void showError(Exception e, int pointError) {
 
-            System.out.println("CHECK FILES");
-            System.out.println("Exit");
-            System.exit(0);
+        switch (pointError) {
+            case 1:
+                System.out.println(e + "\n ERROR LOAD CUSTOMERS");
+                break;
+            case 2:
+                System.out.println(e + "\n ERROR LOAD TITLES");
+                break;
+            case 3:
+                System.out.println(e + "\n ERROR LOAD TITLES RENTED");
+                break;
+            case 4:
+                System.out.println(e + "\n ERROR CUSTOMERS TITLES");
+                break;
+            default:
+                System.out.println(e);
+                break;
         }
+
+        System.out.println("CHECK FILES");
+        System.out.println("Exit");
+        System.exit(0);
+    }
 }
