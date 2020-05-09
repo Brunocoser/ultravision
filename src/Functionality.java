@@ -490,24 +490,24 @@ public class Functionality {
 
     public void registerRent(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
 
-        String IdNumber = "-1";
-        CustomerTitle cTitle = null;
+        String iDNumber = "-1";
+        CustomerTitle customerTitle = null;
 
         System.out.println("*----------  Register a Rent ----------\\n* To return to the menu, type 'exit' *\\n");
         System.out.println("Please, enter a ID Title:");
 
         try {
-            IdNumber = scan.next();
+            iDNumber = scan.next();
             boolean foundTitle = false;
             boolean done = false;
 
-            if (IdNumber.toLowerCase().contentEquals("exit")) {
+            if (iDNumber.toLowerCase().contentEquals("exit")) {
                 return;
             }
 
             for (Title title : listTitles) {
 
-                if (title.getCode() == Integer.parseInt(IdNumber)) {
+                if (title.getCode() == Integer.parseInt(iDNumber)) {
                     foundTitle = true;
                     System.out.println("The title found");
                     showDetails(null, new ArrayList<Title>(Arrays.asList(title)), null);
@@ -524,22 +524,21 @@ public class Functionality {
                     if (!answer.equalsIgnoreCase("no")) {
 
                         try {
-                            int IDCustomer = Integer.parseInt(answer);
+                            int iDCustomer = Integer.parseInt(answer);
                             boolean found = false;
 
                             for (Customer newCustomer : listCustomers) {
 
-                                if (newCustomer.getIntId() == IDCustomer) {
+                                if (newCustomer.getIntId() == iDCustomer) {
                                     found = true;
 
                                     if (newCustomer.getArrayTitlesRented().size() < 4) {
                                         if (newCustomer.getSubPlan().equals(Plans.PR) || newCustomer.getSubPlan().equals(title.getType())) {
 
-                                            cTitle = TitleToCustomerTitle(title, IDCustomer);
-                                            cTitle.rentTitle();
-
+                                            customerTitle = TitleToCustomerTitle(title, iDCustomer);
+                                            customerTitle.rentTitle();
                                             title.setRented(true);
-                                            RenewTitles(listTitles, cTitle.getCode(), true);
+                                            RenewTitles(listTitles, customerTitle.getCode(), true);
 
                                             if (newCustomer.isFreeRentAllowed()) {
                                                 System.out.println("This customer has a free rent. \n Would you like to use the points?('Y/N'");
@@ -561,10 +560,10 @@ public class Functionality {
                                                 System.out.println(newCustomer.getName() + " rented " + title.getTitle()
                                                         + "and 10 loyalty points has been added to his account");
                                             }
-                                            newCustomer.getArrayTitlesRented().add(cTitle);
+                                            newCustomer.getArrayTitlesRented().add(customerTitle);
 
-                                            String strTitle = cTitle.getIntIdCustomer() + "|" + cTitle.getCode() + "|" +
-                                                    cTitle.getStringDateRent() + "|" + cTitle.getStringDateReturn() + "|";
+                                            String strTitle = customerTitle.getIntIdCustomer() + "|" + customerTitle.getCode() + "|" +
+                                                    customerTitle.getStringDateRent() + "|" + customerTitle.getStringDateReturn() + "|";
                                             try {
                                                 FileWriter fw = new FileWriter("CustomerTitle.txt", true);
                                                 fw.write(strTitle + "\n");

@@ -6,7 +6,7 @@
 6|The Lion King|1994|animated musical|Wal Disney|DVD|VL|true|
 7|The Lord of the Rings|2004|adventure|Barrie M Osborne|BluRay|VL|true|
 8|Eternal Sunshine of the Spotless Mind|2001|romantic science|Michel Gondry|DVD|VL|true|
-9|Nemo|2003|computer animated|Pixar Animation|BluRay|VL|false|
+9|Nemo|2003|computer animated|Pixar Animation|BluRay|VL|true|
 10|Wall-E|2008|computer animated|Pixar Animation|DVD|VL|false|
 11|Live at Wembley 25th Anniversary|1982|Music|Queen|DVD|ML|true|
 12|Cliff Richard 60th Anniversary|2018|Music|Cliff Richard|BluRay|ML|false|
