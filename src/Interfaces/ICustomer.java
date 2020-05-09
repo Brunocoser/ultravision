@@ -13,7 +13,7 @@ public interface ICustomer {
     public void setBirthday(String birthday);
     public Plans getSubPlan();
     public void setSubPlan(Plans subPlan);
-    public void ShowCustomersDetails();
+    public void showCustomersDetails();
 
 
 

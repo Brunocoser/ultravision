@@ -1,11 +1,8 @@
 import Enums.MediaFormats;
 import Enums.Plans;
 
-import javax.imageio.IIOException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -33,7 +30,7 @@ public class Functionality {
             } else if (CustomerName.toLowerCase().contentEquals("all")){
                 System.out.println();
                 for (Customer customer : listCustomers) {
-                    customer.ShowCustomersDetails();
+                    customer.showCustomersDetails();
                     found = true;
                 }
                 System.out.println();
@@ -41,7 +38,7 @@ public class Functionality {
                 System.out.println();
                 for (Customer customer : listCustomers) {
                     if (customer.getName().toLowerCase().contains(CustomerName.toLowerCase())) {
-                        customer.ShowCustomersDetails();
+                        customer.showCustomersDetails();
                         found = true;
                     }
                 }
@@ -148,13 +145,13 @@ public class Functionality {
                 } else if (IdNumber.toLowerCase().contentEquals("all")) {
                     System.out.println();
                     for (Customer cust : listCustomers) {
-                        cust.ShowCustomersDetails();
+                        cust.showCustomersDetails();
                     }
                 } else {
                     for (Customer cust : listCustomers) {
                         if (cust.getID() == Integer.parseInt(IdNumber)) {
                             System.out.println("The customer was found.");
-                            cust.ShowCustomersDetails();
+                            cust.showCustomersDetails();
 
                             System.out.println("Please enter a valid name");
                             String name ;
@@ -549,7 +546,7 @@ public class Functionality {
                                             title.setRented(true);
                                             RenewTitles(listTitles, cTitle.getCode(), true);
 
-                                            if (c.isfreeRentAllowed()) {
+                                            if (c.isFreeRentAllowed()) {
                                                 System.out.println("This customer has a free rent. \n Would you like to use the points?('Y/N'");
 
                                                 String answerPoints = scan.next();
@@ -631,7 +628,7 @@ public class Functionality {
                 if (cust.getID() == Integer.parseInt(IdNumber)) {
 
                     if (!cust.getArrayTitlesRented().isEmpty()) {
-                        cust.ShowCustomersDetails();
+                        cust.showCustomersDetails();
                         found = true;
 
                         ShowDetails(cust.getArrayTitlesRented(), null, null);

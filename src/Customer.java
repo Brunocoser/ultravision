@@ -77,7 +77,7 @@ public class Customer implements ICustomer {
     }
 
     public boolean availFreeRent(){
-        if(this.isfreeRentAllowed()){
+        if(this.isFreeRentAllowed()){
             this.points -= 100;
             setRentAllowed();
             return true;
@@ -98,11 +98,11 @@ public class Customer implements ICustomer {
         return points;
     }
 
-    public boolean isfreeRentAllowed(){
+    public boolean isFreeRentAllowed(){
         return freeRentAllowed;
     }
 
-    public void ShowCustomersDetails(){
+    public void showCustomersDetails(){
         System.out.println("ID: " + this.ID + " | Name: " + this.Name + " | Date of Birthday: " + this.Birthday + "| Subs Plan: " + this.SubPlan + " Points: " + this.getPoints());
 
     }
