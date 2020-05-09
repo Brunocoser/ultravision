@@ -70,10 +70,10 @@ public class Main {
                     System.out.println("Return");
                     break;
                 case "1":
-                    functionality.SearchTitle(listTitles);
+                    functionality.searchTitle(listTitles);
                     break;
                 case "2":
-                    functionality.AddTitle(listTitles, myScanner);
+                    functionality.addTitle(listTitles, myScanner);
                     break;
                 case "3":
                     functionality.searchCustomers(listCustomers);
@@ -82,7 +82,7 @@ public class Main {
                     functionality.AddCustomers(listCustomers);
                     break;
                 case "5":
-                    functionality.UpdateCustomers(listCustomers);
+                    functionality.updateCustomers(listCustomers);
                     break;
                 default:
                     System.out.println("It's an invalid option");
@@ -113,10 +113,10 @@ public class Main {
                     System.out.println("Return");
                     break;
                 case "1":
-                    functionality.SearchTitle(listTitles);
+                    functionality.searchTitle(listTitles);
                     break;
                 case "2":
-                    functionality.RegisterRent(listCustomers, listTitles, myScanner);
+                    functionality.registerRent(listCustomers, listTitles, myScanner);
                     break;
                 case "3":
                     functionality.ReturnTitle(listCustomers, listTitles, myScanner);

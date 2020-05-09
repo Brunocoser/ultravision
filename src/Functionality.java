@@ -20,14 +20,14 @@ public class Functionality {
             System.out.println("---------- Search for Customers  ----------\n* To return to the menu, type 'exit' *\n");
             System.out.println("Please, enter a Customer Name (or type 'all' to show all): ");
 
-            String CustomerName = scan.nextLine();
+            String customerName = scan.nextLine();
 
-            if(CustomerName.isEmpty()){
+            if(customerName.isEmpty()){
                 System.out.println("Please enter a valid name:");
             }
-            else if (CustomerName.toLowerCase().contentEquals("exit")) {
+            else if (customerName.toLowerCase().contentEquals("exit")) {
                 returnMenu = true;
-            } else if (CustomerName.toLowerCase().contentEquals("all")){
+            } else if (customerName.toLowerCase().contentEquals("all")){
                 System.out.println();
                 for (Customer customer : listCustomers) {
                     customer.showCustomersDetails();
@@ -37,15 +37,15 @@ public class Functionality {
             } else{
                 System.out.println();
                 for (Customer customer : listCustomers) {
-                    if (customer.getName().toLowerCase().contains(CustomerName.toLowerCase())) {
+                    if (customer.getName().toLowerCase().contains(customerName.toLowerCase())) {
                         customer.showCustomersDetails();
                         found = true;
                     }
                 }
                 System.out.println();
             }
-            if (!found && !returnMenu && !CustomerName.isEmpty()) {
-                System.out.println(CustomerName + " not found.");
+            if (!found && !returnMenu && !customerName.isEmpty()) {
+                System.out.println(customerName + " not found.");
             }
         } while (!returnMenu);
 
@@ -55,36 +55,36 @@ public class Functionality {
     public void AddCustomers(ArrayList<Customer> listCustomers) throws IOException {
 
         boolean valid;
-        String strCustomer = "";
+        String strCustomer;
         Scanner scan = new Scanner(System.in);
         scan.useDelimiter("\\n");
 
         System.out.println("---------- New Customers ----------\n* To return to the menu, type 'exit' *\n");
         System.out.println("Enter a Customer name:");
-        String Name = scan.nextLine();
+        String name = scan.nextLine();
 
-        if (Name.toLowerCase().contentEquals("exit")) {
+        if (name.toLowerCase().contentEquals("exit")) {
             return;
         } else {
             do {
                 valid = false;
 
-                if (Name.isEmpty()) {
-                    System.out.println("Please enter a valid name:");   //"^[a-zA-Z\\s]*$"
-                    Name = scan.nextLine();
+                if (name.isEmpty()) {
+                    System.out.println("Please enter a valid name:");
+                    name = scan.nextLine();
                 } else {
                     valid = true;
                 }
             } while (!valid);
         }
 
-        String CardNumber = null;
+        String cardNumber = null;
         do {
             valid = false;
             System.out.println("Please enter the card number: ");
-            CardNumber = scan.nextLine();
+            cardNumber = scan.nextLine();
 
-            if (!CardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
+            if (!cardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
                 System.out.println("Please enter a valid number");
             } else {
                 valid = true;
@@ -95,7 +95,7 @@ public class Functionality {
 
         String date;
         do {
-            date=  scan.next();
+            date = scan.next();
             if (date.matches("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((18|19|20|21)\\d\\d)")) {
                 valid = true;
             } else {
@@ -106,7 +106,7 @@ public class Functionality {
 
         } while (!valid);
 
-        Customer newCustomer = new Customer(listCustomers.size() + 1, Name, CardNumber, date, Plans.NONE, 0);
+        Customer newCustomer = new Customer(listCustomers.size() + 1, name, cardNumber, date, Plans.NONE, 0);
         listCustomers.add(newCustomer);
 
         strCustomer = newCustomer.getIntId() + "|" + newCustomer.getName() + "|" + newCustomer.getCardNumber() + "|" + date + "|NONE|0|";
@@ -122,34 +122,34 @@ public class Functionality {
         System.out.println(newCustomer.getName() + " was added to the list.");
     }
 
-    public void UpdateCustomers(ArrayList<Customer> listCustomers) {
+    public void updateCustomers(ArrayList<Customer> listCustomers) {
 
         Scanner scan = new Scanner(System.in);
         scan.useDelimiter("\\n");
         boolean valid = false;
 
         do {
-            String IdNumber;
+            String iDNumber;
             System.out.println();
             System.out.println("----------  Updating Customers and Subscription Plan ----------\n* To return to the menu, type 'exit' *\n");
             System.out.println("'all' FOR SHOW ALL THE CUSTOMERS");
             System.out.println("Please, enter a ID Customer:");
 
             try {
-                IdNumber = scan.next();
-                if (IdNumber.toLowerCase().contentEquals("exit")) {
+                iDNumber = scan.next();
+                if (iDNumber.toLowerCase().contentEquals("exit")) {
                     return;
 
-                } else if (IdNumber.toLowerCase().contentEquals("all")) {
+                } else if (iDNumber.toLowerCase().contentEquals("all")) {
                     System.out.println();
-                    for (Customer cust : listCustomers) {
-                        cust.showCustomersDetails();
+                    for (Customer customerUpdated : listCustomers) {
+                        customerUpdated.showCustomersDetails();
                     }
                 } else {
-                    for (Customer cust : listCustomers) {
-                        if (cust.getIntId() == Integer.parseInt(IdNumber)) {
+                    for (Customer customerUpdated : listCustomers) {
+                        if (customerUpdated.getIntId() == Integer.parseInt(iDNumber)) {
                             System.out.println("The customer was found.");
-                            cust.showCustomersDetails();
+                            customerUpdated.showCustomersDetails();
 
                             System.out.println("Please enter a valid name");
                             String name ;
@@ -164,16 +164,16 @@ public class Functionality {
                                 }
                             } while (!valid);
 
-                            String CardNumber;
+                            String cardNumber;
 
                             do {
                                 valid = false;
 
-                                System.out.println("Please enter the card number: ");
-                                CardNumber = scan.next();
+                                System.out.println("Please enter the card number:");
+                                cardNumber = scan.next();
 
-                                if (!CardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
-                                    System.out.println("Please enter a valid Card Number: ");
+                                if (!cardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
+                                    System.out.println("Please enter a valid Card Number:");
                                 } else {
                                     valid = true;
                                 }
@@ -194,9 +194,9 @@ public class Functionality {
 
                             } while (!valid);
 
-                            cust.setName(name);
-                            cust.setCardNumber(CardNumber);
-                            cust.setBirthday(date);
+                            customerUpdated.setName(name);
+                            customerUpdated.setCardNumber(cardNumber);
+                            customerUpdated.setBirthday(date);
 
                             do {
                                 valid = false;
@@ -207,27 +207,27 @@ public class Functionality {
                                         + "- (TV) TV Lover: Can only rent Box Sets.\r\n"
                                         + "- (PR) Premium: Can rent any title\n"
                                         + "- (NONE) No Plan");
-                                String SubPlan = scan.next();
+                                String subPlan = scan.next();
 
-                                switch (SubPlan.toUpperCase()) {
+                                switch (subPlan.toUpperCase()) {
                                     case "ML":
-                                        cust.setSubPlan(Plans.ML);
+                                        customerUpdated.setSubPlan(Plans.ML);
                                         valid = true;
                                         break;
                                     case "VL":
-                                        cust.setSubPlan(Plans.VL);
+                                        customerUpdated.setSubPlan(Plans.VL);
                                         valid = true;
                                         break;
                                     case "TV":
-                                        cust.setSubPlan(Plans.TV);
+                                        customerUpdated.setSubPlan(Plans.TV);
                                         valid = true;
                                         break;
                                     case "PR":
-                                        cust.setSubPlan(Plans.PR);
+                                        customerUpdated.setSubPlan(Plans.PR);
                                         valid = true;
                                         break;
                                     case "NONE":
-                                        cust.setSubPlan(Plans.NONE);
+                                        customerUpdated.setSubPlan(Plans.NONE);
                                         valid = true;
                                         break;
                                     default:
@@ -243,7 +243,7 @@ public class Functionality {
 
                         }
                     }
-                    UnloadCustomers(listCustomers);
+                    updateCustomersList(listCustomers);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -252,7 +252,7 @@ public class Functionality {
         }while (!valid);
     }
 
-    public void UnloadCustomers(ArrayList<Customer> listCustomers) {
+    public void updateCustomersList(ArrayList<Customer> listCustomers) {
 
         Boolean renew = false;
 
@@ -274,23 +274,23 @@ public class Functionality {
 
     }
 
-    public void SearchTitle(ArrayList<Title> listTitles) {
+    public void searchTitle(ArrayList<Title> listTitles) {
         Scanner scan = new Scanner(System.in);
         boolean returnMenu = false;
         do {
             boolean found = false;
 
-            ShowDetails(null, listTitles, "");
+            showDetails(null, listTitles, "");
             System.out.println("");
             System.out.println("---------- Search for Titles ----------\n* To return to the menu, type 'exit' *\n");
             System.out.println("Please, enter a Title Name (or type 'all' to show all titles)");
 
-            String TitleName = scan.nextLine();
+            String titleName = scan.nextLine();
 
-            if (TitleName.toLowerCase().contentEquals("exit")) {
+            if (titleName.toLowerCase().contentEquals("exit")) {
                 returnMenu = true;
             }
-            else if(TitleName.toLowerCase().contentEquals("all")){
+            else if(titleName.toLowerCase().contentEquals("all")){
                 System.out.println();
                 for (Title title : listTitles){
                     title.showTitleDetails();
@@ -298,25 +298,25 @@ public class Functionality {
                 }
 
             }else{
-                found = ShowDetails(null, listTitles, TitleName.toLowerCase());
+                found = showDetails(null, listTitles, titleName.toLowerCase());
             }
 
             if (!found && !returnMenu) {
-                System.out.println(TitleName + " was not found. Please try it again.");
+                System.out.println(titleName + " was not found. Please try it again.");
             }
         } while (!returnMenu);
     }
 
-    public void AddTitle(ArrayList<Title> listTitles, Scanner scan) {
+    public void addTitle(ArrayList<Title> listTitles, Scanner scan) {
         boolean returnMenu = false;
         String strTitle;
 
         do {
-            boolean validFormat = false;
+            boolean validFormat;
 
             System.out.println("---------- Add new Titles ----------\n"
                     + "------------------------------------\n* To return to the menu, type 'exit' *\n");
-            String title = null;
+            String title;
 
             System.out.println("Enter a name for the new title: ");
 
@@ -328,16 +328,15 @@ public class Functionality {
                 if (title.toLowerCase().contentEquals("exit")) {
                     returnMenu = true;
                     break;
-                } else {                // Needs to accept numbers, special characters and space between names
-                    if (title.isEmpty() || !title.matches("^[a-zA-Z0-9\\s]*$")){
+                } else {
+                    if (title.isEmpty()){
                         System.out.println("The name must only contains letters and numbers.");
                         System.out.println("Please enter a valid name:");
                         title = scan.nextLine();
                     } else {
-                        if (ShowDetails(null, listTitles, title)){
-                            System.out.println("This title is already added to the system");
-
-                            System.out.println("Please enter a valid name: ");
+                        if (showDetails(null, listTitles, title)){
+                            System.out.println("This title is already on the system");
+                            System.out.println("Please enter a valid name:");
                             title = scan.nextLine();
                         } else {
                             validFormat = true;
@@ -387,37 +386,37 @@ public class Functionality {
                 }
             } while (!validFormat);
 
-            String DirectorOrBand = null;
+            String directorOrBand = null;
             do {
                 validFormat = false;
                 System.out.println("Please enter director or band for this title: ");
-                DirectorOrBand = scan.nextLine();
+                directorOrBand = scan.nextLine();
 
-                if (DirectorOrBand.isEmpty() || !DirectorOrBand.matches("[a-zA-Z]+")) {
-                    System.out.println("The director or band must have only letters");
+                if (directorOrBand.isEmpty()) {
+                    System.out.println("Please enter a valid name");
                 } else {
                     validFormat = true;
                 }
             } while (!validFormat);
 
-            Title t = new Title(listTitles.size() + 1, title, year, genre, DirectorOrBand, null, null, false);
+            Title newTitle = new Title(listTitles.size() + 1, title, year, genre, directorOrBand, null, null, false);
 
             do {
                 validFormat = false;
-                System.out.println("Please enter a format for the new title (CD, DVD or BluRay:");
+                System.out.println("Please enter a format for the new title (CD, DVD or BluRay)");
                 String format = scan.nextLine();
 
                     switch (format.toLowerCase()) {
                         case "cd":
-                            t.setFormatValue(MediaFormats.CD);
+                            newTitle.setFormatValue(MediaFormats.CD);
                             validFormat = true;
                             break;
                         case "dvd":
-                            t.setFormatValue(MediaFormats.DVD);
+                            newTitle.setFormatValue(MediaFormats.DVD);
                             validFormat = true;
                             break;
                         case "bluray":
-                            t.setFormatValue(MediaFormats.BluRay);
+                            newTitle.setFormatValue(MediaFormats.BluRay);
                             validFormat = true;
                             break;
                         default:
@@ -427,7 +426,6 @@ public class Functionality {
             } while (!validFormat);
 
             do {
-
                 System.out.println("Please enter a type for the title");
                 System.out.println("(ML) Music or Live Concert Videos");
                 System.out.println("(VL) Movie");
@@ -437,15 +435,15 @@ public class Functionality {
 
                 switch (type.toUpperCase()) {
                     case "ML":
-                        t.setType(Plans.ML);
+                        newTitle.setType(Plans.ML);
                         validFormat = true;
                         break;
                     case "VL":
-                        t.setType(Plans.VL);
+                        newTitle.setType(Plans.VL);
                         validFormat = true;
                         break;
                     case "TV":
-                        t.setType(Plans.TV);
+                        newTitle.setType(Plans.TV);
                         validFormat = true;
                         break;
                     default:
@@ -455,11 +453,11 @@ public class Functionality {
                 }
             } while (!validFormat);
 
-            listTitles.add(t);
+            listTitles.add(newTitle);
 
-            strTitle = t.getCode() + "|" + t.getTitle() + "|"
-                    + t.getYearRelease() + "|" + t.getGenre() + "|"
-                    + t.getDirectorOrBand() + "|" + t.getFormatValue() + "|" + t.getType() + "|false|";
+            strTitle = newTitle.getCode() + "|" + newTitle.getTitle() + "|"
+                    + newTitle.getYearRelease() + "|" + newTitle.getGenre() + "|"
+                    + newTitle.getDirectorOrBand() + "|" + newTitle.getFormatValue() + "|" + newTitle.getType() + "|false|";
 
             try {
                 FileWriter fw = new FileWriter("Titles.txt", true);
@@ -469,7 +467,7 @@ public class Functionality {
                 e.printStackTrace();
             }
 
-            System.out.println(t.getTitle() + " was added to the inventory");
+            System.out.println(newTitle.getTitle() + " was added to the inventory");
 
             do {
                 validFormat = false;
@@ -479,7 +477,6 @@ public class Functionality {
                 String res = scan.nextLine();
 
                 if (res.equalsIgnoreCase("Y")) {
-                    returnMenu = false;
                     validFormat = true;
                 } else if (res.equalsIgnoreCase("N")) {
                     returnMenu = true;
@@ -491,7 +488,7 @@ public class Functionality {
         } while (!returnMenu);
     }
 
-    public void RegisterRent(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
+    public void registerRent(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
 
         String IdNumber = "-1";
         CustomerTitle cTitle = null;
@@ -513,7 +510,7 @@ public class Functionality {
                 if (title.getCode() == Integer.parseInt(IdNumber)) {
                     foundTitle = true;
                     System.out.println("The title found");
-                    ShowDetails(null, new ArrayList<Title>(Arrays.asList(title)), null);
+                    showDetails(null, new ArrayList<Title>(Arrays.asList(title)), null);
 
                     if (title.isRented()) {
                         System.out.println("Title is already rented");
@@ -575,7 +572,7 @@ public class Functionality {
                                             } catch (IOException e) {
                                                 e.printStackTrace();
                                             }
-                                            UnloadCustomers(listCustomers);
+                                            updateCustomersList(listCustomers);
                                             break;
                                         } else {
                                             System.out.println("Customer plan(" + newCustomer.getSubPlan().toString() + ") can not rent this title(" +
@@ -629,7 +626,7 @@ public class Functionality {
                         cust.showCustomersDetails();
                         found = true;
 
-                        ShowDetails(cust.getArrayTitlesRented(), null, null);
+                        showDetails(cust.getArrayTitlesRented(), null, null);
 
                         System.out.println("\n Please enter code of the title: ");
 
@@ -758,7 +755,7 @@ public class Functionality {
         }
     }
 
-    public boolean ShowDetails(ArrayList<CustomerTitle> listCTitles, ArrayList<Title> listTitles, String TitleName){
+    public boolean showDetails(ArrayList<CustomerTitle> listCTitles, ArrayList<Title> listTitles, String TitleName){
         boolean found = false;
 
         if (listCTitles != null){
