@@ -79,7 +79,7 @@ public class Main {
                     functionality.searchCustomers(listCustomers);
                     break;
                 case "4":
-                    functionality.AddCustomers(listCustomers);
+                    functionality.addCustomers(listCustomers);
                     break;
                 case "5":
                     functionality.updateCustomers(listCustomers);

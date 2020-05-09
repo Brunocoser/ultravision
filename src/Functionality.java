@@ -51,8 +51,7 @@ public class Functionality {
 
     }
 
-    // CANT RENAME THE METHOD
-    public void AddCustomers(ArrayList<Customer> listCustomers) throws IOException {
+    public void addCustomers(ArrayList<Customer> listCustomers) throws IOException {
 
         boolean valid;
         String strCustomer;
