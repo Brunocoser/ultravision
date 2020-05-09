@@ -187,7 +187,7 @@ public class load {
                 for (CustomerTitle ct : M_listCustomersTitles){
                     if(c.getID() == ct.getIDCustomer()){
 
-                        title = SearchTitleById(ct.getCode());
+                        title = searchTitleById(ct.getCode());
 
                         ct.setTitle(title.getTitle());
                         ct.setYearRelease(title.getYearRelease());
@@ -206,7 +206,7 @@ public class load {
         }
         }
 
-        public static title SearchTitleById(int id) {
+        public static title searchTitleById(int id) {
 
             for (int i = 0; i < M_listTitles.size(); i++){
 
