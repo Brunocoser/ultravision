@@ -4,16 +4,16 @@ import Enums.MediaFormats;
 
 public interface ITitle {
 
-    public int getCode();
-    public void setCode(int code);
-    public int getYearRelease();
-    public void setYearRelease(int yearRelease);
-    public String getTitle();
-    public void setTitle(String title);
-    public String getGenre();
-    public void setGenre(String genre);
-    public String getDirectorOrBand();
-    public void setDirectorOrBand(String director);
-    public MediaFormats getFormatValue();
-    public void setFormatValue(MediaFormats formatValue);
+    int getCode();
+    void setCode(int code);
+    int getYearRelease();
+    void setYearRelease(int yearRelease);
+    String getTitle();
+    void setTitle(String title);
+    String getGenre();
+    void setGenre(String genre);
+    String getDirectorOrBand();
+    void setDirectorOrBand(String director);
+    MediaFormats getFormatValue();
+    void setFormatValue(MediaFormats formatValue);
 }
