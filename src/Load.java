@@ -90,17 +90,17 @@ public class Load {
 
                 boolean rented = Boolean.valueOf(sRented);
 
-                Title t = new Title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
+                Title newTitle = new Title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
 
                 switch (format.toLowerCase()) {
                     case "cd":
-                        t.setFormatValue(MediaFormats.CD);
+                        newTitle.setFormatValue(MediaFormats.CD);
                         break;
                     case "dvd":
-                        t.setFormatValue(MediaFormats.DVD);
+                        newTitle.setFormatValue(MediaFormats.DVD);
                         break;
                     case "bluray":
-                        t.setFormatValue(MediaFormats.BluRay);
+                        newTitle.setFormatValue(MediaFormats.BluRay);
                         break;
                     default:
                         System.out.println("It's an invalid option");
@@ -109,26 +109,26 @@ public class Load {
 
                 switch (type.toUpperCase()) {
                     case "ML":
-                        t.setType(Plans.ML);
+                        newTitle.setType(Plans.ML);
                         break;
                     case "VL":
-                        t.setType(Plans.VL);
+                        newTitle.setType(Plans.VL);
                         break;
                     case "TV":
-                        t.setType(Plans.TV);
+                        newTitle.setType(Plans.TV);
                         break;
                     case "PR":
-                        t.setType(Plans.PR);
+                        newTitle.setType(Plans.PR);
                         break;
                     case "NONE":
-                        t.setType(Plans.NONE);
+                        newTitle.setType(Plans.NONE);
                         break;
                     default:
-                        t.setType(Plans.NONE);
+                        newTitle.setType(Plans.NONE);
                         break;
                 }
                 line = bufferedR.readLine();
-                listTitles.add(t);
+                listTitles.add(newTitle);
             }
         } catch (Exception e) {
             showError(e, 2);
