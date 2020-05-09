@@ -5,62 +5,62 @@ import java.util.ArrayList;
 
 public class Customer implements ICustomer {
 
-    private int ID;
-    private String Name;
-    private String CardNumber;
-    private String Birthday;
-    private Plans SubPlan;
+    private int intId;
+    private String strName;
+    private String strCardNumber;
+    private String strBirthday;
+    private Plans subPlan;
     private int points;
     private boolean freeRentAllowed;
-    private ArrayList<CustomerTitle> TitlesRented;
+    private ArrayList<CustomerTitle> TitlesRented; //MAKE IT FINAL?
 
-    public Customer (int ID, String Name, String CardNumber, String Birthday, Plans SubscriptionPlan, int Points){
-        this.ID = ID;
-        this.Name = Name;
-        this.CardNumber = CardNumber;
-        this.Birthday = Birthday;
-        this.SubPlan = SubscriptionPlan;
+    public Customer (int intId, String strName, String strCardNumber, String strBirthday, Plans SubscriptionPlan, int Points){
+        this.intId = intId;
+        this.strName = strName;
+        this.strCardNumber = strCardNumber;
+        this.strBirthday = strBirthday;
+        this.subPlan = SubscriptionPlan;
         this.TitlesRented = new ArrayList<CustomerTitle>();
     }
 
-    public int getID() {
-        return ID;
+    public int getIntId() {
+        return intId;
     }
 
-    public void setID(int iD) {
-        ID = iD;
+    public void setIntId(int iD) {
+        intId = iD;
     }
 
-    public String getName() {
-        return Name;
+    public String getStrName() {
+        return strName;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setStrName(String strName) {
+        this.strName = strName;
     }
 
-    public String getCardNumber() {
-        return CardNumber;
+    public String getStrCardNumber() {
+        return strCardNumber;
     }
 
-    public void setCardNumber(String cardNumber) {
-        CardNumber = cardNumber;
+    public void setStrCardNumber(String strCardNumber) {
+        this.strCardNumber = strCardNumber;
     }
 
-    public String getBirthday() {
-        return Birthday;
+    public String getStrBirthday() {
+        return strBirthday;
     }
 
-    public void setBirthday(String birthday) {
-        Birthday = birthday;
+    public void setStrBirthday(String strBirthday) {
+        this.strBirthday = strBirthday;
     }
 
     public Plans getSubPlan() {
-        return SubPlan;
+        return subPlan;
     }
 
     public void setSubPlan(Plans subPlan) {
-        SubPlan = subPlan;
+        this.subPlan = subPlan;
     }
 
     public ArrayList<CustomerTitle> getArrayTitlesRented(){
@@ -103,7 +103,7 @@ public class Customer implements ICustomer {
     }
 
     public void showCustomersDetails(){
-        System.out.println("ID: " + this.ID + " | Name: " + this.Name + " | Date of Birthday: " + this.Birthday + "| Subs Plan: " + this.SubPlan + " Points: " + this.getPoints());
+        System.out.println("ID: " + this.intId + " | Name: " + this.strName + " | Date of Birthday: " + this.strBirthday + "| Subs Plan: " + this.subPlan + " Points: " + this.getPoints());
 
     }
 

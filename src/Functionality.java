@@ -37,7 +37,7 @@ public class Functionality {
             } else{
                 System.out.println();
                 for (Customer customer : listCustomers) {
-                    if (customer.getName().toLowerCase().contains(CustomerName.toLowerCase())) {
+                    if (customer.getStrName().toLowerCase().contains(CustomerName.toLowerCase())) {
                         customer.showCustomersDetails();
                         found = true;
                     }
@@ -109,7 +109,7 @@ public class Functionality {
         Customer c = new Customer(listCustomers.size() + 1, Name, CardNumber, date, Plans.NONE, 0);
         listCustomers.add(c);
 
-        strCustomer = c.getID() + "|" + c.getName() + "|" + c.getCardNumber() + "|" + date + "|NONE|0|";
+        strCustomer = c.getIntId() + "|" + c.getStrName() + "|" + c.getStrCardNumber() + "|" + date + "|NONE|0|";
 
         try {
             FileWriter fw = new FileWriter("Customers.txt", true);
@@ -119,7 +119,7 @@ public class Functionality {
             e.printStackTrace();
         }
 
-        System.out.println(c.getName() + " was added to the list.");
+        System.out.println(c.getStrName() + " was added to the list.");
     }
 
     public void UpdateCustomers(ArrayList<Customer> listCustomers) {
@@ -147,7 +147,7 @@ public class Functionality {
                     }
                 } else {
                     for (Customer cust : listCustomers) {
-                        if (cust.getID() == Integer.parseInt(IdNumber)) {
+                        if (cust.getIntId() == Integer.parseInt(IdNumber)) {
                             System.out.println("The customer was found.");
                             cust.showCustomersDetails();
 
@@ -194,9 +194,9 @@ public class Functionality {
 
                             } while (!valid);
 
-                            cust.setName(name);
-                            cust.setCardNumber(CardNumber);
-                            cust.setBirthday(date);
+                            cust.setStrName(name);
+                            cust.setStrCardNumber(CardNumber);
+                            cust.setStrBirthday(date);
 
                             do {
                                 valid = false;
@@ -257,8 +257,8 @@ public class Functionality {
         Boolean renew = false;
 
         for (int i = 0; i < listCustomers.size(); i++) {
-            String strCustomer = listCustomers.get(i).getID() + "|" + listCustomers.get(i).getName() + "|"
-                    + listCustomers.get(i).getCardNumber() + "|" + listCustomers.get(i).getBirthday() + "|"
+            String strCustomer = listCustomers.get(i).getIntId() + "|" + listCustomers.get(i).getStrName() + "|"
+                    + listCustomers.get(i).getStrCardNumber() + "|" + listCustomers.get(i).getStrBirthday() + "|"
                     + listCustomers.get(i).getSubPlan() + "|" + listCustomers.get(i).getPoints() + "|";
             try {
                 if (i > 0) {
@@ -532,7 +532,7 @@ public class Functionality {
 
                             for (Customer c : listCustomers) {
 
-                                if (c.getID() == IDCustomer) {
+                                if (c.getIntId() == IDCustomer) {
                                     found = true;
 
                                     if (c.getArrayTitlesRented().size() < 4) {
@@ -553,7 +553,7 @@ public class Functionality {
 
                                                     c.availFreeRent();
 
-                                                    System.out.println(c.getName() + "rented " + title.getTitle()
+                                                    System.out.println(c.getStrName() + "rented " + title.getTitle()
                                                             + "and it is free of charge. 100 loyalty points deducted.");
                                                     done = true;
                                                 }
@@ -561,7 +561,7 @@ public class Functionality {
                                             if (!done) {
                                                 c.addPoints(10);
 
-                                                System.out.println(c.getName() + " rented " + title.getTitle()
+                                                System.out.println(c.getStrName() + " rented " + title.getTitle()
                                                         + "and 10 loyalty points has been added to his account");
                                             }
                                             c.getArrayTitlesRented().add(cTitle);
@@ -623,7 +623,7 @@ public class Functionality {
 
             for (Customer cust : listCustomers) {
 
-                if (cust.getID() == Integer.parseInt(IdNumber)) {
+                if (cust.getIntId() == Integer.parseInt(IdNumber)) {
 
                     if (!cust.getArrayTitlesRented().isEmpty()) {
                         cust.showCustomersDetails();

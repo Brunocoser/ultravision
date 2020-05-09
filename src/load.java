@@ -185,7 +185,7 @@ public class load {
         try {
             for (Customer c : M_listCustomers) {
                 for (CustomerTitle ct : M_listCustomersTitles) {
-                    if (c.getID() == ct.getIDCustomer()) {
+                    if (c.getIntId() == ct.getIDCustomer()) {
 
                         title = searchTitleById(ct.getCode());
 
