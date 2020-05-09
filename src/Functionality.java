@@ -538,7 +538,7 @@ public class Functionality {
                                             customerTitle = TitleToCustomerTitle(title, iDCustomer);
                                             customerTitle.rentTitle();
                                             title.setRented(true);
-                                            RenewTitles(listTitles, customerTitle.getCode(), true);
+                                            renewTitles(listTitles, customerTitle.getCode(), true);
 
                                             if (newCustomer.isFreeRentAllowed()) {
                                                 System.out.println("This customer has a free rent. \n Would you like to use the points?('Y/N'");
@@ -602,36 +602,36 @@ public class Functionality {
         }
     }
 
-    public void ReturnTitle(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
+    public void returnTitle(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
 
-        String IdNumber = "-1";
+        String iDNumber = "-1";
         Boolean found = false;
 
         System.out.println("----------  Register a Return ----------\n* To return to the menu, type 'exit' *\n");
         System.out.println("Please enter the customer ID: ");
 
-        IdNumber = scan.next();
+        iDNumber = scan.next();
 
         try {
-            if (IdNumber.toLowerCase().contentEquals("exit")) {
+            if (iDNumber.toLowerCase().contentEquals("exit")) {
                 return;
             }
 
-            for (Customer cust : listCustomers) {
+            for (Customer customer : listCustomers) {
 
-                if (cust.getIntId() == Integer.parseInt(IdNumber)) {
+                if (customer.getIntId() == Integer.parseInt(iDNumber)) {
 
-                    if (!cust.getArrayTitlesRented().isEmpty()) {
-                        cust.showCustomersDetails();
+                    if (!customer.getArrayTitlesRented().isEmpty()) {
+                        customer.showCustomersDetails();
                         found = true;
 
-                        showDetails(cust.getArrayTitlesRented(), null, null);
+                        showDetails(customer.getArrayTitlesRented(), null, null);
 
                         System.out.println("\n Please enter code of the title: ");
 
                         int code = scan.nextInt();
 
-                        for (CustomerTitle cTitle : cust.getArrayTitlesRented()) {
+                        for (CustomerTitle cTitle : customer.getArrayTitlesRented()) {
                             if (cTitle.getCode() == code) {
                                 cTitle.show();
 
@@ -659,10 +659,10 @@ public class Functionality {
                                             System.out.println("The amount that have to be paid is: " + ((diffDays * -1) + 3));
                                         }
 
-                                        cust.getArrayTitlesRented().remove(cTitle);
+                                        customer.getArrayTitlesRented().remove(cTitle);
 
-                                        RenewCustomerstitles(listCustomers);
-                                        RenewTitles(listTitles, cTitle.getCode(), false);
+                                        renewCustomerstitles(listCustomers);
+                                        renewTitles(listTitles, cTitle.getCode(), false);
 
                                         System.out.println(cTitle.getTitle() + " was returned");
                                         break;
@@ -693,7 +693,7 @@ public class Functionality {
         return cTitle;
     }
 
-    public void RenewCustomerstitles(ArrayList<Customer> listCustomers) {
+    public void renewCustomerstitles(ArrayList<Customer> listCustomers) {
         Boolean renew = false;
         int controlRenew = -1;
 
@@ -726,7 +726,7 @@ public class Functionality {
         }
     }
 
-    public void RenewTitles(ArrayList<Title> listTitles, int code, boolean rented){
+    public void renewTitles(ArrayList<Title> listTitles, int code, boolean rented){
         boolean renew = false;
         int controlRenew = -1;
 

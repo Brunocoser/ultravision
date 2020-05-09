@@ -119,7 +119,7 @@ public class Main {
                     functionality.registerRent(listCustomers, listTitles, myScanner);
                     break;
                 case "3":
-                    functionality.ReturnTitle(listCustomers, listTitles, myScanner);
+                    functionality.returnTitle(listCustomers, listTitles, myScanner);
                     break;
                 default:
                     System.out.println("It's an invalid option");
