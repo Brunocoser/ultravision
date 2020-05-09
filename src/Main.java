@@ -10,7 +10,7 @@ public class Main {
 
         load.loadCustomers();
         load.loadTitles();
-        load.LoadCustomerTitles();
+        load.loadCustomerTitles();
         load.joinTitleRented();
 
 

@@ -138,7 +138,7 @@ public class load {
 
         }
 
-        public void LoadCustomerTitles(){
+        public void loadCustomerTitles(){
 
         CustomerTitle t = null;
         ArrayList<CustomerTitle> listCustomersTitles = new ArrayList<CustomerTitle>();
