@@ -13,8 +13,6 @@ public class Main {
         load.LoadCustomerTitles();
         load.joinTitleRented();
 
-        ArrayList<Title> listTitles = load.returnListTitles();
-        ArrayList<Customer> listCustomers = load.returnListCustomers();
 
         Scanner myScanner = new Scanner(System.in);
         String option = "";

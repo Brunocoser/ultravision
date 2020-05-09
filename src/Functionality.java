@@ -56,7 +56,7 @@ public class Functionality {
 
     public void AddCustomers(ArrayList<Customer> listCustomers) throws IOException {
 
-        boolean valid = false;
+        boolean valid;
         String strCustomer = "";
         Scanner scan = new Scanner(System.in);
         scan.useDelimiter("\\n");
