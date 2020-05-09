@@ -6,14 +6,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        Load load = new Load();
+        new Main();
+    }
 
+    public Main() throws IOException {
+
+        Load load = new Load();
         load.loadCustomers();
         load.loadTitles();
         load.loadCustomerTitles();
         load.joinTitleRented();
-
-
         Scanner myScanner = new Scanner(System.in);
         myScanner.useDelimiter("\\n");
         String option;
@@ -107,7 +109,7 @@ public class Main {
                     + "|   [0] Return to main menu                      |\n"
                     + "|                                                |\n"
                     + "----------Please, choose a valid option----------");
-           option = myScanner.nextLine();
+            option = myScanner.nextLine();
             switch (option) {
                 case "0":
                     System.out.println("Return");
