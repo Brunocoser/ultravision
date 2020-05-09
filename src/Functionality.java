@@ -535,7 +535,7 @@ public class Functionality {
                                     if (newCustomer.getArrayTitlesRented().size() < 4) {
                                         if (newCustomer.getSubPlan().equals(Plans.PR) || newCustomer.getSubPlan().equals(title.getType())) {
 
-                                            customerTitle = TitleToCustomerTitle(title, iDCustomer);
+                                            customerTitle = titleToCustomerTitle(title, iDCustomer);
                                             customerTitle.rentTitle();
                                             title.setRented(true);
                                             renewTitles(listTitles, customerTitle.getCode(), true);
@@ -661,7 +661,7 @@ public class Functionality {
 
                                         customer.getArrayTitlesRented().remove(cTitle);
 
-                                        renewCustomerstitles(listCustomers);
+                                        renewCustomersTitles(listCustomers);
                                         renewTitles(listTitles, cTitle.getCode(), false);
 
                                         System.out.println(cTitle.getTitle() + " was returned");
@@ -686,14 +686,14 @@ public class Functionality {
         }
     }
 
-    public CustomerTitle TitleToCustomerTitle(Title title, int idCustomer) {
+    public CustomerTitle titleToCustomerTitle(Title title, int idCustomer) {
         CustomerTitle cTitle = new CustomerTitle(title.getCode(), title.getTitle(), title.getYearRelease(),
                 title.getGenre(), title.getDirectorOrBand(), title.getFormatValue(), title.getType(), title.isRented());
         cTitle.setIntIdCustomer(idCustomer);
         return cTitle;
     }
 
-    public void renewCustomerstitles(ArrayList<Customer> listCustomers) {
+    public void renewCustomersTitles(ArrayList<Customer> listCustomers) {
         Boolean renew = false;
         int controlRenew = -1;
 
@@ -730,14 +730,14 @@ public class Functionality {
         boolean renew = false;
         int controlRenew = -1;
 
-        for (Title t : listTitles){
-            if (t.getCode() == code){
-                t.setRented(rented);
+        for (Title renewTitle : listTitles){
+            if (renewTitle.getCode() == code){
+                renewTitle.setRented(rented);
             }
 
-            String strTitle = t.getCode() + "|" + t.getTitle() + "|" + t.getYearRelease() + "|" +
-                    t.getGenre() + "|" + t.getDirectorOrBand() + "|" + t.getFormatValue() + "|" +
-                    t.getType() + "|" + t.isRented() + "|";
+            String strTitle = renewTitle.getCode() + "|" + renewTitle.getTitle() + "|" + renewTitle.getYearRelease() + "|" +
+                    renewTitle.getGenre() + "|" + renewTitle.getDirectorOrBand() + "|" + renewTitle.getFormatValue() + "|" +
+                    renewTitle.getType() + "|" + renewTitle.isRented() + "|";
 
             controlRenew++;
 
