@@ -28,13 +28,13 @@ public class Load {
                 int id = Integer.parseInt(field[0]);
                 String name = field[1];
                 String card = field[2];
-                String Birthday = field[3];
-                String SubPlan = field[4];
+                String birthday = field[3];
+                String subPlan = field[4];
                 int points = Integer.parseInt(field[5]);
 
-                Customer newCustomer = new Customer(id, name, card, Birthday, null, points);
+                Customer newCustomer = new Customer(id, name, card, birthday, null, points);
 
-                switch (SubPlan.toUpperCase()) {
+                switch (subPlan.toUpperCase()) {
                     case "ML":
                         newCustomer.setSubPlan(Plans.ML);
                         break;
@@ -88,7 +88,7 @@ public class Load {
                 String type = field[6];
                 String sRented = field[7];
 
-                boolean rented = Boolean.valueOf(sRented);
+                boolean rented = Boolean.parseBoolean(sRented);
 
                 Title newTitle = new Title(id, title, yearRelease, genre, directorOrBand, null, null, rented);
 
@@ -140,7 +140,7 @@ public class Load {
 
     public void loadCustomerTitles() {
 
-        CustomerTitle t;
+        CustomerTitle customerTitle;
         ArrayList<CustomerTitle> listCustomersTitles = new ArrayList<CustomerTitle>();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -162,14 +162,14 @@ public class Load {
                 Date DateRent = format.parse(sDateRent);
                 Date DateReturn = format.parse(sDateReturn);
 
-                t = new CustomerTitle(idTitle, "", 0, "", "", MediaFormats.NONE, Plans.NONE, false);
-                t.setIntIdCustomer(idCustomer);
-                t.setDateRent(DateRent);
-                t.setDateReturn(DateReturn);
+                customerTitle = new CustomerTitle(idTitle, "", 0, "", "", MediaFormats.NONE, Plans.NONE, false);
+                customerTitle.setIntIdCustomer(idCustomer);
+                customerTitle.setDateRent(DateRent);
+                customerTitle.setDateReturn(DateReturn);
 
                 line = bufferedR.readLine();
 
-                listCustomersTitles.add(t);
+                listCustomersTitles.add(customerTitle);
             }
 
         } catch (Exception e) {
@@ -184,20 +184,20 @@ public class Load {
 
         try {
             for (Customer newCustomer : M_listCustomers) {
-                for (CustomerTitle ct : M_listCustomersTitles) {
-                    if (newCustomer.getIntId() == ct.getIntIdCustomer()) {
+                for (CustomerTitle customerTitle : M_listCustomersTitles) {
+                    if (newCustomer.getIntId() == customerTitle.getIntIdCustomer()) {
 
-                        title = searchTitleById(ct.getCode());
+                        title = searchTitleById(customerTitle.getCode());
 
-                        ct.setTitle(title.getTitle());
-                        ct.setYearRelease(title.getYearRelease());
-                        ct.setGenre(title.getGenre());
-                        ct.setDirectorOrBand(title.getDirectorOrBand());
-                        ct.setFormatValue(title.getFormatValue());
-                        ct.setType(title.getType());
-                        ct.setRented(title.isRented());
+                        customerTitle.setTitle(title.getTitle());
+                        customerTitle.setYearRelease(title.getYearRelease());
+                        customerTitle.setGenre(title.getGenre());
+                        customerTitle.setDirectorOrBand(title.getDirectorOrBand());
+                        customerTitle.setFormatValue(title.getFormatValue());
+                        customerTitle.setType(title.getType());
+                        customerTitle.setRented(title.isRented());
 
-                        newCustomer.addArrayTitlesRented(ct);
+                        newCustomer.addArrayTitlesRented(customerTitle);
                     }
                 }
             }
