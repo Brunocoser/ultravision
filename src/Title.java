@@ -12,6 +12,7 @@ public class Title implements ITitle {
     private Plans type;
     private boolean rented;
 
+    // CHANGE THE TITLE NAME TO CAMELCASE
     public Title(int code, String title, int yearRelease, String genre, String directorOrBand, MediaFormats format, Plans type, boolean rented) {
         this.code = code;
         this.title = title;

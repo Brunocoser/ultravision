@@ -51,6 +51,7 @@ public class Functionality {
 
     }
 
+    // CANT RENAME THE METHOD
     public void AddCustomers(ArrayList<Customer> listCustomers) throws IOException {
 
         boolean valid;
@@ -91,9 +92,6 @@ public class Functionality {
         } while (!valid);
 
         System.out.println("Please enter the date of Birthday(DD/MM/YYYY): ");
-
-        //ITS NOT LOOPING INTO THE DATE METHOD
-        //ITS GOING THROUGH JUST 2X
 
         String date;
         do {
