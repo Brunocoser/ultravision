@@ -32,31 +32,31 @@ public class Load {
                 String SubPlan = field[4];
                 int points = Integer.parseInt(field[5]);
 
-                Customer c = new Customer(id, name, card, Birthday, null, points);
+                Customer newCustomer = new Customer(id, name, card, Birthday, null, points);
 
                 switch (SubPlan.toUpperCase()) {
                     case "ML":
-                        c.setSubPlan(Plans.ML);
+                        newCustomer.setSubPlan(Plans.ML);
                         break;
                     case "VL":
-                        c.setSubPlan(Plans.VL);
+                        newCustomer.setSubPlan(Plans.VL);
                         break;
                     case "TV":
-                        c.setSubPlan(Plans.TV);
+                        newCustomer.setSubPlan(Plans.TV);
                         break;
                     case "PR":
-                        c.setSubPlan(Plans.PR);
+                        newCustomer.setSubPlan(Plans.PR);
                         break;
                     case "NONE":
-                        c.setSubPlan(Plans.NONE);
+                        newCustomer.setSubPlan(Plans.NONE);
                         break;
                     default:
-                        c.setSubPlan(Plans.NONE);
+                        newCustomer.setSubPlan(Plans.NONE);
                         break;
                 }
 
                 line = bufferedR.readLine();
-                listCustomers.add(c);
+                listCustomers.add(newCustomer);
             }
 
             M_listCustomers = listCustomers;
