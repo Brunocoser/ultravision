@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Functionality {
-    public void SearchCustomers(ArrayList<Customer> listCustomers) {
+    public void searchCustomers(ArrayList<Customer> listCustomers) {
 
         boolean returnMenu = false;
         Scanner scan = new Scanner(System.in);

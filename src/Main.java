@@ -75,7 +75,7 @@ public class Main {
                     functionality.AddTitle(listTitles, myScanner);
                     break;
                 case "3":
-                    functionality.SearchCustomers(listCustomers);
+                    functionality.searchCustomers(listCustomers);
                     break;
                 case "4":
                     functionality.AddCustomers(listCustomers);
