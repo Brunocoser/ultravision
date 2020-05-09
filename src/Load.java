@@ -163,7 +163,7 @@ public class Load {
                 Date DateReturn = format.parse(sDateReturn);
 
                 t = new CustomerTitle(idTitle, "", 0, "", "", MediaFormats.NONE, Plans.NONE, false);
-                t.setIDCustomer(idCustomer);
+                t.setIntIdCustomer(idCustomer);
                 t.setDateRent(DateRent);
                 t.setDateReturn(DateReturn);
 
@@ -185,7 +185,7 @@ public class Load {
         try {
             for (Customer newCustomer : M_listCustomers) {
                 for (CustomerTitle ct : M_listCustomersTitles) {
-                    if (newCustomer.getIntId() == ct.getIDCustomer()) {
+                    if (newCustomer.getIntId() == ct.getIntIdCustomer()) {
 
                         title = searchTitleById(ct.getCode());
 

@@ -566,7 +566,7 @@ public class Functionality {
                                             }
                                             newCustomer.getArrayTitlesRented().add(cTitle);
 
-                                            String strTitle = cTitle.getIDCustomer() + "|" + cTitle.getCode() + "|" +
+                                            String strTitle = cTitle.getIntIdCustomer() + "|" + cTitle.getCode() + "|" +
                                                     cTitle.getStringDateRent() + "|" + cTitle.getStringDateReturn() + "|";
                                             try {
                                                 FileWriter fw = new FileWriter("CustomerTitle.txt", true);
@@ -693,7 +693,7 @@ public class Functionality {
     public CustomerTitle TitleToCustomerTitle(Title title, int idCustomer) {
         CustomerTitle cTitle = new CustomerTitle(title.getCode(), title.getTitle(), title.getYearRelease(),
                 title.getGenre(), title.getDirectorOrBand(), title.getFormatValue(), title.getType(), title.isRented());
-        cTitle.setIDCustomer(idCustomer);
+        cTitle.setIntIdCustomer(idCustomer);
         return cTitle;
     }
 
@@ -703,7 +703,7 @@ public class Functionality {
 
         for (Customer customer : listCustomers) {
             for (CustomerTitle cTitle : customer.getArrayTitlesRented()) {
-                String strTitle = cTitle.getIDCustomer() + "|" + cTitle.getCode() + "|" + cTitle.getStringDateRent() + "|"
+                String strTitle = cTitle.getIntIdCustomer() + "|" + cTitle.getCode() + "|" + cTitle.getStringDateRent() + "|"
                         + cTitle.getStringDateReturn() + "|";
                 controlRenew++;
 
