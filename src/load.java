@@ -61,7 +61,7 @@ public class load {
 
             M_listCustomers = listCustomers;
         }catch (Exception e){
-            ShowError(e, 1);
+            showError(e, 1);
         }
 
     }
@@ -131,7 +131,7 @@ public class load {
                 listTitles.add(t);
         }
         }catch (Exception e){
-            ShowError(e, 2);
+            showError(e, 2);
         }
 
         M_listTitles = listTitles;
@@ -173,7 +173,7 @@ public class load {
                 }
 
             }catch (Exception e){
-                ShowError(e, 3);
+                showError(e, 3);
             }
 
             M_listCustomersTitles = listCustomersTitles;
@@ -202,7 +202,7 @@ public class load {
                 }
             }
         }   catch (Exception e){
-                ShowError(e, 4);
+                showError(e, 4);
         }
         }
 
@@ -228,7 +228,7 @@ public class load {
         ArrayList<Customer> listCustomers = M_listCustomers;
         return listCustomers;
         }
-        public void ShowError(Exception e, int pointError){
+        public void showError(Exception e, int pointError){
 
             switch (pointError){
                 case 1:
