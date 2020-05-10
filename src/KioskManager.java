@@ -18,7 +18,7 @@ public class KioskManager {
             boolean found = false;
 
             System.out.println("---------- Search for Customers  ----------\n* To return to the menu, type 'exit' *\n");
-            System.out.println("Please, enter a Customer Name (or type 'all' to show all): ");
+            System.out.println("Please, enter a Customer Name (or type 'all' to show all customers): ");
 
             String customerName = scan.nextLine();
 
@@ -59,7 +59,7 @@ public class KioskManager {
         scan.useDelimiter("\\n");
 
         System.out.println("---------- New Customers ----------\n* To return to the menu, type 'exit' *\n");
-        System.out.println("Enter a Customer name:");
+        System.out.println("Please enter the Customer name:");
         String name = scan.nextLine();
 
         if (checkForExit(name)) {
@@ -71,7 +71,7 @@ public class KioskManager {
                 if (checkForExit(name)) {
                     return;
                 }
-
+                //it's just checking if the input is not blank as a person can have name that would not be valid in a regex
                 if (name.isEmpty()) {
                     System.out.println("Please enter a valid name:");
                     name = scan.nextLine();
@@ -84,17 +84,17 @@ public class KioskManager {
         String cardNumber = null;
         do {
             valid = false;
-            System.out.println("Please enter the card number: ");
+            System.out.println("Please enter the card number:");
             cardNumber = scan.nextLine();
 
             if (!cardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
-                System.out.println("Please enter a valid number");
+                System.out.println("Please enter a number of 16 digits");
             } else {
                 valid = true;
             }
         } while (!valid);
 
-        System.out.println("Please enter the date of Birthday(DD/MM/YYYY): ");
+        System.out.println("Please enter the date of Birthday (DD/MM/YYYY):");
 
         String date;
         do {
@@ -122,7 +122,7 @@ public class KioskManager {
             e.printStackTrace();
         }
 
-        System.out.println(newCustomer.getName() + " was added to the list.");
+        System.out.println(newCustomer.getName() + " was added to the system.");
     }
 
     public boolean checkForExit(String value){
@@ -139,8 +139,8 @@ public class KioskManager {
             String iDNumber;
             System.out.println();
             System.out.println("----------  Updating Customers and Subscription Plan ----------\n* To return to the menu, type 'exit' *\n");
-            System.out.println("'all' FOR SHOW ALL THE CUSTOMERS");
-            System.out.println("Please, enter a ID Customer:");
+            System.out.println("Please enter 'all' to show all the customers");
+            System.out.println("Please enter the ID of the customer:");
 
             try {
                 iDNumber = scan.next();
@@ -168,7 +168,7 @@ public class KioskManager {
                                 valid = false;
                                 name = scan.next();
                                 if (name.isEmpty()) {
-                                    System.out.println("The name must have only letters");
+                                    System.out.println("Please enter a valid name");
                                 } else {
                                     valid = true;
                                 }
@@ -183,13 +183,13 @@ public class KioskManager {
                                 cardNumber = scan.next();
 
                                 if (!cardNumber.matches("(\\d{4}[-. ]?){4}|\\d{4}[-. ]?\\d{6}[-. ]?\\d{5}")) {
-                                    System.out.println("Please enter a valid Card Number:");
+                                    System.out.println("Please enter a number of 16 digits:");
                                 } else {
                                     valid = true;
                                 }
                             } while (!valid);
 
-                            System.out.println("Enter a new date of birthday (dd/mm/yyyy)");
+                            System.out.println("Enter a new date of birthday (DD/MM/YYYY)");
                             String date = scan.next();
 
                             do {
@@ -198,7 +198,7 @@ public class KioskManager {
                                     valid = true;
                                 } else {
                                     System.out.println("Invalid date");
-                                    System.out.println("Please enter a valid date of birthday (dd/mm/yyyy)");
+                                    System.out.println("Please enter a valid date of birthday (DD/MM/YYYY)");
                                     date = scan.next();
                                 }
 
@@ -257,7 +257,7 @@ public class KioskManager {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("It wasn't possible to update the customer details.");
+                System.out.println("It was not possible to update the customer details.");
             }
         }while (!valid);
     }
@@ -293,7 +293,7 @@ public class KioskManager {
             showDetails(null, listTitles, "");
             System.out.println("");
             System.out.println("---------- Search for Titles ----------\n* To return to the menu, type 'exit' *\n");
-            System.out.println("Please, enter a Title Name (or type 'all' to show all titles)");
+            System.out.println("Please, enter the Title Name (or type 'all' to show all titles)");
 
             String titleName = scan.nextLine();
 
@@ -328,7 +328,7 @@ public class KioskManager {
                     + "------------------------------------\n* To return to the menu, type 'exit' *\n");
             String title;
 
-            System.out.println("Enter a name for the new title: ");
+            System.out.println("Please enter a name for the new title: ");
 
             title = scan.nextLine();
 
@@ -339,14 +339,14 @@ public class KioskManager {
                     returnMenu = true;
                     break;
                 } else {
+                    //it's just checking if the input is not blank as a title can have name that would not be valid in a regex
                     if (title.isEmpty()){
-                        System.out.println("The name must only contains letters and numbers.");
                         System.out.println("Please enter a valid name:");
                         title = scan.nextLine();
                     } else {
                         if (showDetails(null, listTitles, title)){
                             System.out.println("This title is already on the system");
-                            System.out.println("Please enter a valid name:");
+                            System.out.println("Please enter a valid name");
                             title = scan.nextLine();
                         } else {
                             validFormat = true;
@@ -369,8 +369,8 @@ public class KioskManager {
                 sYear = scan.nextLine();
 
                 if (sYear.length() != 4 || !sYear.matches("^[0-9]+")) {
-                    System.out.println("Please enter a valid number");
-                    System.out.println("Please enter the year of release of this title");
+                    System.out.println("Please enter a number of 4 digits");
+                    System.out.println("Please enter the year release of this title");
                 } else {
                     if (Integer.parseInt(sYear) > 0) {
                         year = Integer.parseInt(sYear);
@@ -386,7 +386,7 @@ public class KioskManager {
             do {
                 validFormat = false;
 
-                System.out.println("Enter a genre for this new title");
+                System.out.println("Please enter a genre for this title");
                 genre = scan.nextLine();
 
                 if (genre.isEmpty() || !genre.matches("[a-zA-Z]+")) {
@@ -413,7 +413,7 @@ public class KioskManager {
 
             do {
                 validFormat = false;
-                System.out.println("Please enter a format for the new title (CD, DVD or BluRay)");
+                System.out.println("Please enter the format of the title (CD, DVD or BluRay)");
                 String format = scan.nextLine();
 
                     switch (format.toLowerCase()) {
@@ -436,7 +436,7 @@ public class KioskManager {
             } while (!validFormat);
 
             do {
-                System.out.println("Please enter a type for the title");
+                System.out.println("Please enter the type of the title");
                 System.out.println("(ML) Music or Live Concert Videos");
                 System.out.println("(VL) Movie");
                 System.out.println("(TV) Box Set");
@@ -477,12 +477,12 @@ public class KioskManager {
                 e.printStackTrace();
             }
 
-            System.out.println(newTitle.getTitle() + " was added to the inventory");
+            System.out.println(newTitle.getTitle() + " was added to the system");
 
             do {
                 validFormat = false;
 
-                System.out.println("Do you want to add another one? Y/N");
+                System.out.println("Do you want to add another title? Y/N");
 
                 String res = scan.nextLine();
 
@@ -504,7 +504,7 @@ public class KioskManager {
         CustomerTitle customerTitle;
 
         System.out.println("*----------  Register a Rent ----------\\n* To return to the menu, type 'exit' *\\n");
-        System.out.println("Please, enter a ID Title:");
+        System.out.println("Please enter the Title ID:");
 
         try {
             iDNumber = scan.next();
@@ -655,7 +655,7 @@ public class KioskManager {
 
                                     if (currDate.after(cTitle.getDateReturn())) {
                                         System.out.println("This title should be returned " + (diffDays * -1)
-                                                + " days ago. There is a penalty" + ((diffDays * -1) + 3));
+                                                + " days ago. There is a fine" + ((diffDays * -1) + 3));
                                     } else {
                                         System.out.println("This title should be returned on " + cTitle.getStringDateReturn());
                                     }
@@ -664,9 +664,9 @@ public class KioskManager {
 
                                     if (answer.toLowerCase().equalsIgnoreCase("y")) {
                                         if (diffDays <= 0) {
-                                            System.out.println("The amount that have to be paid is: " + (diffDays * -1));
+                                            System.out.println("The amount that have to be paid is: " + (diffDays * -1) + "€");
                                         } else {
-                                            System.out.println("The amount that have to be paid is: " + ((diffDays * -1) + 3));
+                                            System.out.println("The amount that have to be paid is: " + ((diffDays * -1) + 3) + "€");
                                         }
 
                                         customer.getArrayTitlesRented().remove(cTitle);
@@ -689,10 +689,10 @@ public class KioskManager {
                 }
             }
             if (!found) {
-                System.out.println("It was not possible to return the title. Please, enter a valid ID and try it again");
+                System.out.println("It was not possible to return the title. Please enter a valid ID and try it again");
             }
         } catch (Exception e) {
-            System.out.println("Error : it was not possible to return the title. Please, enter a valid ID and try it again");
+            System.out.println("Error: it was not possible to return the title. Please enter a valid ID and try it again");
         }
     }
 
