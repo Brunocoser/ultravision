@@ -5,7 +5,7 @@
 5|Toy Story|1995|computer animated|Pixar Animation|BluRay|VL|false|
 6|The Lion King|1994|animated musical|Wal Disney|DVD|VL|false|
 7|The Lord of the Rings|2004|adventure|Barrie M Osborne|BluRay|VL|false|
-8|Eternal Sunshine of the Spotless Mind|2001|romantic science|Michel Gondry|DVD|VL|true|
+8|Eternal Sunshine of the Spotless Mind|2001|romantic science|Michel Gondry|DVD|VL|false|
 9|Nemo|2003|computer animated|Pixar Animation|BluRay|VL|true|
 10|Wall-E|2008|computer animated|Pixar Animation|DVD|VL|false|
 11|Live at Wembley 25th Anniversary|1982|Music|Queen|DVD|ML|true|
@@ -52,3 +52,4 @@
 52|dsdsdsd|2324|lol|laslas|DVD|ML|false|
 53|Pulp Fiction|1980|Action|\|CD|TV|false|
 54|Pulp Fiction 2|9999|Action|12345|DVD|TV|false|
+55|Bruno|1000|horroe|lol|CD|TV|false|

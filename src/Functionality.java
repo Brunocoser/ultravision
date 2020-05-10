@@ -136,6 +136,9 @@ public class Functionality {
 
             try {
                 iDNumber = scan.next();
+                if (iDNumber.isEmpty()){
+                    return;
+                }
                 if (iDNumber.toLowerCase().contentEquals("exit")) {
                     return;
 
