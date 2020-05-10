@@ -79,9 +79,9 @@ public class Load {
             while (line != null) {
 
                 String[] field = line.split("\\|");
-                Integer id = Integer.parseInt(field[0]);
+                int id = Integer.parseInt(field[0]);
                 String title = field[1];
-                Integer yearRelease = Integer.parseInt(field[2]);
+                int yearRelease = Integer.parseInt(field[2]);
                 String genre = field[3];
                 String directorOrBand = field[4];
                 String format = field[5];
@@ -180,7 +180,7 @@ public class Load {
     }
 
     public void joinTitleRented() {
-        Title title = null;
+        Title title;
 
         try {
             for (Customer newCustomer : M_listCustomers) {

@@ -51,7 +51,7 @@ public class Functionality {
 
     }
 
-    public void addCustomers(ArrayList<Customer> listCustomers) throws IOException {
+    public void addCustomers(ArrayList<Customer> listCustomers) {
 
         boolean valid;
         String strCustomer;
@@ -253,7 +253,7 @@ public class Functionality {
 
     public void updateCustomersList(ArrayList<Customer> listCustomers) {
 
-        Boolean renew = false;
+        boolean renew = false;
 
         for (int i = 0; i < listCustomers.size(); i++) {
             String strCustomer = listCustomers.get(i).getIntId() + "|" + listCustomers.get(i).getName() + "|"
@@ -348,7 +348,7 @@ public class Functionality {
                 break;
             }
 
-            String sYear = null;
+            String sYear;
             int year = 0;
             System.out.println("Please enter the year of release of this title");
 
@@ -370,7 +370,7 @@ public class Functionality {
                 }
             } while (!validFormat);
 
-            String genre = null;
+            String genre;
 
             do {
                 validFormat = false;
@@ -385,7 +385,7 @@ public class Functionality {
                 }
             } while (!validFormat);
 
-            String directorOrBand = null;
+            String directorOrBand;
             do {
                 validFormat = false;
                 System.out.println("Please enter director or band for this title: ");
@@ -489,8 +489,8 @@ public class Functionality {
 
     public void registerRent(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
 
-        String iDNumber = "-1";
-        CustomerTitle customerTitle = null;
+        String iDNumber;
+        CustomerTitle customerTitle;
 
         System.out.println("*----------  Register a Rent ----------\\n* To return to the menu, type 'exit' *\\n");
         System.out.println("Please, enter a ID Title:");
@@ -509,7 +509,7 @@ public class Functionality {
                 if (title.getCode() == Integer.parseInt(iDNumber)) {
                     foundTitle = true;
                     System.out.println("The title found");
-                    showDetails(null, new ArrayList<Title>(Arrays.asList(title)), null);
+                    showDetails(null, new ArrayList<>(Arrays.asList(title)), null);
 
                     if (title.isRented()) {
                         System.out.println("Title is already rented");
@@ -603,8 +603,8 @@ public class Functionality {
 
     public void returnTitle(ArrayList<Customer> listCustomers, ArrayList<Title> listTitles, Scanner scan) {
 
-        String iDNumber = "-1";
-        Boolean found = false;
+        String iDNumber;
+        boolean found = false;
 
         System.out.println("----------  Register a Return ----------\n* To return to the menu, type 'exit' *\n");
         System.out.println("Please enter the customer ID: ");
@@ -693,7 +693,7 @@ public class Functionality {
     }
 
     public void renewCustomersTitles(ArrayList<Customer> listCustomers) {
-        Boolean renew = false;
+        boolean renew = false;
         int controlRenew = -1;
 
         for (Customer customer : listCustomers) {
