@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Functionality {
+public class KioskManager {
     public void searchCustomers(ArrayList<Customer> listCustomers) {
 
         boolean returnMenu = false;

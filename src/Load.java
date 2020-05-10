@@ -52,7 +52,7 @@ public class Load {
 
     public void menuEmployee(ArrayList<Title> listTitles, ArrayList<Customer> listCustomers) throws IOException {
 
-        Functionality functionality = new Functionality();
+        KioskManager kioskManager = new KioskManager();
         Scanner myScanner = new Scanner(System.in);
         myScanner.useDelimiter("\\n");
         String option = "";
@@ -74,19 +74,19 @@ public class Load {
                     System.out.println("Return");
                     break;
                 case "1":
-                    functionality.searchTitle(listTitles);
+                    kioskManager.searchTitle(listTitles);
                     break;
                 case "2":
-                    functionality.addTitle(listTitles, myScanner);
+                    kioskManager.addTitle(listTitles, myScanner);
                     break;
                 case "3":
-                    functionality.searchCustomers(listCustomers);
+                    kioskManager.searchCustomers(listCustomers);
                     break;
                 case "4":
-                    functionality.addCustomers(listCustomers);
+                    kioskManager.addCustomers(listCustomers);
                     break;
                 case "5":
-                    functionality.updateCustomers(listCustomers);
+                    kioskManager.updateCustomers(listCustomers);
                     break;
                 default:
                     System.out.println("It's an invalid option");
@@ -97,7 +97,7 @@ public class Load {
 
     public void menuCustomer(ArrayList<Title> listTitles, ArrayList<Customer> listCustomers) {
 
-        Functionality functionality = new Functionality();
+        KioskManager kioskManager = new KioskManager();
         Scanner myScanner = new Scanner(System.in);
         myScanner.useDelimiter("\\n");
         String option = "";
@@ -117,13 +117,13 @@ public class Load {
                     System.out.println("Return");
                     break;
                 case "1":
-                    functionality.searchTitle(listTitles);
+                    kioskManager.searchTitle(listTitles);
                     break;
                 case "2":
-                    functionality.registerRent(listCustomers, listTitles, myScanner);
+                    kioskManager.registerRent(listCustomers, listTitles, myScanner);
                     break;
                 case "3":
-                    functionality.returnTitle(listCustomers, listTitles, myScanner);
+                    kioskManager.returnTitle(listCustomers, listTitles, myScanner);
                     break;
                 default:
                     System.out.println("It's an invalid option:" + option);
