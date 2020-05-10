@@ -111,7 +111,7 @@ public class Load {
                     + "|   [0] Return to main menu                      |\n"
                     + "|                                                |\n"
                     + "----------Please, choose a valid option----------");
-            option = myScanner.nextLine();
+            option = myScanner.next();
             switch (option) {
                 case "0":
                     System.out.println("Return");
@@ -126,7 +126,7 @@ public class Load {
                     functionality.returnTitle(listCustomers, listTitles, myScanner);
                     break;
                 default:
-                    System.out.println("It's an invalid option");
+                    System.out.println("It's an invalid option:" + option);
                     break;
             }
         } while (!option.equals("0"));
