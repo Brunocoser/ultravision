@@ -3,11 +3,11 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Load load = new Load();
-        load.loadCustomers();
-        load.loadTitles();
-        load.loadCustomerTitles();
-        load.joinTitleRented();
-        load.showMenu();
+        KioskMenu kioskMenu = new KioskMenu();
+        kioskMenu.loadCustomers();
+        kioskMenu.loadTitles();
+        kioskMenu.loadCustomerTitles();
+        kioskMenu.joinTitleRented();
+        kioskMenu.showMenu();
     }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Load {
+public class KioskMenu {
 
     ArrayList<Customer> M_listCustomers = new ArrayList<Customer>();
     static ArrayList<Title> M_listTitles = new ArrayList<Title>();
