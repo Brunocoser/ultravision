@@ -10,7 +10,7 @@ public class Main {
     }
 
     public Main() throws IOException {
-x
+
         Load load = new Load();
         load.loadCustomers();
         load.loadTitles();
