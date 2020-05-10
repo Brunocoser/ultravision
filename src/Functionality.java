@@ -62,11 +62,15 @@ public class Functionality {
         System.out.println("Enter a Customer name:");
         String name = scan.nextLine();
 
-        if (name.toLowerCase().contentEquals("exit")) {
+        if (checkForExit(name)) {
             return;
         } else {
             do {
                 valid = false;
+
+                if (checkForExit(name)) {
+                    return;
+                }
 
                 if (name.isEmpty()) {
                     System.out.println("Please enter a valid name:");
@@ -119,6 +123,10 @@ public class Functionality {
         }
 
         System.out.println(newCustomer.getName() + " was added to the list.");
+    }
+
+    public boolean checkForExit(String value){
+        return value.toLowerCase().contentEquals("exit");
     }
 
     public void updateCustomers(ArrayList<Customer> listCustomers) {
