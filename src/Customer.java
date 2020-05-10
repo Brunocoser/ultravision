@@ -12,7 +12,7 @@ public class Customer implements ICustomer {
     private Plans subPlan;
     private int points;
     private boolean freeRentAllowed;
-    private ArrayList<CustomerTitle> TitlesRented; //MAKE IT FINAL?
+    private final ArrayList<CustomerTitle> titlesRented;
 
     public Customer (int intId, String name, String cardNumber, String birthday, Plans SubscriptionPlan, int points){
         this.intId = intId;
@@ -20,7 +20,7 @@ public class Customer implements ICustomer {
         this.cardNumber = cardNumber;
         this.birthday = birthday;
         this.subPlan = SubscriptionPlan;
-        this.TitlesRented = new ArrayList<CustomerTitle>();
+        this.titlesRented = new ArrayList<>();
     }
 
     public int getIntId() {
@@ -64,11 +64,11 @@ public class Customer implements ICustomer {
     }
 
     public ArrayList<CustomerTitle> getArrayTitlesRented(){
-        return TitlesRented;
+        return titlesRented;
     }
 
     public void addArrayTitlesRented(CustomerTitle title){
-        TitlesRented.add(title);
+        titlesRented.add(title);
     }
 
     public void addPoints(int points){
